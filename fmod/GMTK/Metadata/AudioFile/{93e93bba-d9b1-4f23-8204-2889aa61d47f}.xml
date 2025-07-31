@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{93e93bba-d9b1-4f23-8204-2889aa61d47f}">
 		<property name="assetPath">
 			<value>train1_amb.wav</value>

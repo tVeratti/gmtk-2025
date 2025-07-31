@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ae74a032-525e-4dce-8098-0641e8b6e65c}">
 		<property name="assetPath">
 			<value>wind1_amb.wav</value>
