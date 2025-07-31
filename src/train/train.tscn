@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwno3upmbut3a"]
+
+[ext_resource type="PackedScene" uid="uid://q5inrad673eu" path="res://train/train_car.tscn" id="1_wbttr"]
+
+[node name="Train" type="Node2D"]
+
+[node name="TrainCar" parent="." instance=ExtResource("1_wbttr")]
+
+[node name="TrainCar2" parent="." instance=ExtResource("1_wbttr")]
+position = Vector2(1268, 0)
+
+[node name="TrainCar3" parent="." instance=ExtResource("1_wbttr")]
+position = Vector2(2541, 0)

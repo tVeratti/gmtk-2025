@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://reaxmh4iatxs"]
+
+[ext_resource type="PackedScene" uid="uid://gkp7hgfjxvu0" path="res://map/map.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cwno3upmbut3a" path="res://train/train.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://clchosgdufaln" path="res://components/parallax_auto_scroller/parallax_auto_scroller.gd" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dd4ytua83oq10" path="res://map/assets/texture_09.png" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://w4p426bbuk2l" path="res://components/main_camera.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://yysv0g68tg2x" path="res://character/player/player.tscn" id="4_1bvp3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0xm2m"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Main" type="Node2D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+
+[node name="Map" parent="SubViewport" instance=ExtResource("1_ig7tw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_0xm2m")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1024, 0)
+script = ExtResource("2_7mycd")
+speed = -800.0
+
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 703)
+scale = Vector2(2, 1)
+texture = ExtResource("2_lquwl")
+centered = false
+
+[node name="ForeGround" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2000, 0)
+script = ExtResource("2_7mycd")
+speed = -1200.0
+
+[node name="Temp" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+modulate = Color(0.485703, 0.485704, 0.485703, 1)
+position = Vector2(46, 999)
+scale = Vector2(0.5, 1)
+texture = ExtResource("2_lquwl")
+centered = false
+
+[node name="Train" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(-101, 267)
+
+[node name="Player" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(46, 593)
+
+[node name="MoveCamera" type="Camera2D" parent="Player"]
+position = Vector2(0, -233)
+position_smoothing_enabled = true
+script = ExtResource("3_h2yge")
+metadata/_custom_type_script = "uid://w4p426bbuk2l"

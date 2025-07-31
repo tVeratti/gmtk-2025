@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://yysv0g68tg2x"]
+
+[ext_resource type="Script" uid="uid://c7o1ov0f1f5wy" path="res://components/state_machine/state_machine.gd" id="1_8eijk"]
+[ext_resource type="Script" uid="uid://bmu3t5l6qg4vt" path="res://character/player/player.gd" id="1_g20gq"]
+[ext_resource type="Script" uid="uid://dsrdj51ffut2a" path="res://character/player/player_controller.gd" id="1_wu8e1"]
+[ext_resource type="Script" uid="uid://cbp8tfldtdhut" path="res://character/player/player_state/idle.gd" id="2_gtsfv"]
+[ext_resource type="Script" uid="uid://b1yrpp1rep1l7" path="res://character/player/player_state/move.gd" id="3_gtsfv"]
+[ext_resource type="Texture2D" uid="uid://tmx857ntpov2" path="res://character/player/assets/IMG_1230.png" id="6_eu8pa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu8pa"]
+radius = 50.0
+height = 320.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_g20gq")
+
+[node name="PlayerController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_wu8e1")
+metadata/_custom_type_script = "uid://dsrdj51ffut2a"
+
+[node name="StateMachineComponent" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("1_8eijk")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://c7o1ov0f1f5wy"
+
+[node name="Idle" type="Node" parent="StateMachineComponent"]
+script = ExtResource("2_gtsfv")
+
+[node name="Move" type="Node" parent="StateMachineComponent"]
+script = ExtResource("3_gtsfv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_eu8pa")
+
+[node name="State" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -23.0
+offset_top = -209.0
+offset_right = 17.0
+offset_bottom = -186.0
+
+[node name="VisualRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(89, -20)
+
+[node name="Sprite" type="Sprite2D" parent="VisualRoot"]
+unique_name_in_owner = true
+position = Vector2(-2, -2)
+texture = ExtResource("6_eu8pa")

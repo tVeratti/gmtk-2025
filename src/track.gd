@@ -2,7 +2,7 @@ class_name Track
 extends Node3D
 
 
-const SPEED:float = 0.1
+const SPEED:float = 0.001
 
 
 @onready var path_follow_3d = %PathFollow3D
