@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://qvsvkhevbgy6"]
+
+[ext_resource type="Script" uid="uid://cw53mtlcytdfc" path="res://map/hud/hud.gd" id="1_ppxrw"]
+[ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_kkii1"]
+
+[sub_resource type="Curve2D" id="Curve2D_kkii1"]
+
+[node name="Hud" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ppxrw")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(343, 203)
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+unique_name_in_owner = true
+points = PackedVector2Array(30, 16, 2, 54, 65, 104, 121, 85, 146, -17, 82, -23, 43, -9)
+closed = true
+
+[node name="Path2D" type="Path2D" parent="Node2D"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_kkii1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Path2D/PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kkii1")

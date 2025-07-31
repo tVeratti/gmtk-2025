@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://gkp7hgfjxvu0"]
+[gd_scene load_steps=12 format=3 uid="uid://gkp7hgfjxvu0"]
 
 [ext_resource type="Script" uid="uid://xalnj75he8jm" path="res://map/map_3d/map_3d.gd" id="1_llq3w"]
 [ext_resource type="PackedScene" uid="uid://cp8h1hwg52x31" path="res://map/map_3d/track/track.tscn" id="2_a0dt8"]
 [ext_resource type="Texture2D" uid="uid://boou0v3qtltew" path="res://map/assets/skybox.png" id="2_a0762"]
 [ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="4_lgq1i"]
+[ext_resource type="PackedScene" uid="uid://dxo6yewgi4twv" path="res://map/station/station.tscn" id="5_a0762"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgq1i"]
 panorama = ExtResource("2_a0762")
@@ -16,7 +17,6 @@ background_mode = 2
 sky = SubResource("Sky_4hjbm")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lgq1i"]
-dof_blur_far_enabled = true
 dof_blur_far_distance = 20.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0dt8"]
@@ -58,3 +58,12 @@ texture = ExtResource("4_lgq1i")
 transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 25.4624, 3.32284, -22.6391)
 billboard = 2
 texture = ExtResource("4_lgq1i")
+
+[node name="Station0" parent="." instance=ExtResource("5_a0762")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -122.52)
+
+[node name="Station1" parent="." instance=ExtResource("5_a0762")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.625)
+track_position = 0.5
+
+[editable path="Track"]

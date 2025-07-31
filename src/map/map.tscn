@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdh3xivp4ihfw"]
+[gd_scene load_steps=10 format=3 uid="uid://cdh3xivp4ihfw"]
 
 [ext_resource type="Script" uid="uid://cyqfvhl72mt3g" path="res://map/map.gd" id="1_5jdw0"]
 [ext_resource type="PackedScene" uid="uid://gkp7hgfjxvu0" path="res://map/map_3d/map_3d.tscn" id="1_cn70m"]
-[ext_resource type="Script" uid="uid://clchosgdufaln" path="res://components/parallax_auto_scroller/parallax_auto_scroller.gd" id="2_dje7r"]
+[ext_resource type="Script" uid="uid://clchosgdufaln" path="res://map/parallax_auto_scroller.gd" id="2_dje7r"]
 [ext_resource type="Texture2D" uid="uid://bm00aissmtove" path="res://map/assets/track.png" id="4_5jdw0"]
 [ext_resource type="PackedScene" uid="uid://cwno3upmbut3a" path="res://train/train.tscn" id="4_lvomx"]
 [ext_resource type="PackedScene" uid="uid://yysv0g68tg2x" path="res://player/player.tscn" id="5_tjure"]
 [ext_resource type="Script" uid="uid://w4p426bbuk2l" path="res://components/main_camera.gd" id="6_xnt8k"]
+[ext_resource type="PackedScene" uid="uid://qvsvkhevbgy6" path="res://map/hud/hud.tscn" id="8_kxmgb"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5oqum"]
 viewport_path = NodePath("SubViewport")
@@ -20,17 +21,17 @@ size = Vector2i(1920, 1080)
 [node name="Map3D" parent="SubViewport" instance=ExtResource("1_cn70m")]
 unique_name_in_owner = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Map" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+[node name="Map" type="TextureRect" parent="Background/MarginContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_5oqum")
 
@@ -54,6 +55,11 @@ position = Vector2(0, 669)
 texture = ExtResource("4_5jdw0")
 centered = false
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="UI" node_paths=PackedStringArray("map_3d") instance=ExtResource("8_kxmgb")]
+map_3d = NodePath("../../SubViewport/Map3D")
+
 [node name="Train" parent="." instance=ExtResource("4_lvomx")]
 unique_name_in_owner = true
 position = Vector2(-101, 267)
@@ -62,7 +68,7 @@ position = Vector2(-101, 267)
 unique_name_in_owner = true
 position = Vector2(46, 593)
 
-[node name="MoveCamera" type="Camera2D" parent="Player"]
+[node name="MainCamera" type="Camera2D" parent="Player"]
 position = Vector2(0, -183)
 position_smoothing_enabled = true
 script = ExtResource("6_xnt8k")

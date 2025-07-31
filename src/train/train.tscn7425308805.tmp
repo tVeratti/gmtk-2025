@@ -44,10 +44,3 @@ script = ExtResource("9_cuns8")
 
 [node name="TrainCars" type="Node2D" parent="."]
 unique_name_in_owner = true
-
-[node name="Info" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = 354.0
-offset_top = 66.0
-offset_right = 394.0
-offset_bottom = 89.0

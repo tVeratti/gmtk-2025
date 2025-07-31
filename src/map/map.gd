@@ -1,9 +1,6 @@
 extends Node2D
 
 
-const TRACK_SPEED:float = 0.001
-
-
 @onready var map_3d:Map3D = %Map3D
 @onready var train:Train = %Train
 @onready var player:Player = %Player
@@ -17,6 +14,7 @@ func _ready() -> void:
 
 
 func _process(delta):
-	loop_progress += TRACK_SPEED * delta
+	loop_progress += MapManager.train_speed * delta
+	loop_progress = loop_progress - int(loop_progress)
 	
-	map_3d.track.path_follow_3d.progress_ratio = -loop_progress
+	MapManager.track_position = loop_progress

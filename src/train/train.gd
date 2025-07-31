@@ -3,9 +3,11 @@ extends Node2D
 
 
 signal train_cars_ready
+signal arrive_at_station
 
 
 const TRAIN_CAR_GAP:float = 30.0
+const TRAIN_SPEED_MAX:float = 0.01
 
 
 @export var train_car_scene = load("uid://q5inrad673eu")
@@ -14,6 +16,8 @@ const TRAIN_CAR_GAP:float = 30.0
 
 @onready var train_cars_root:Node2D = %TrainCars
 @onready var passengers:TrainPassengers = %Passengers
+
+@onready var info:Label = %Info
 
 
 var train_cars:Array = []
