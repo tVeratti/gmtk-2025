@@ -1,58 +1,63 @@
-[gd_scene load_steps=11 format=3 uid="uid://gkp7hgfjxvu0"]
+[gd_scene load_steps=9 format=3 uid="uid://cdh3xivp4ihfw"]
 
-[ext_resource type="Texture2D" uid="uid://dd4ytua83oq10" path="res://map/assets/texture_09.png" id="1_hgrid"]
-[ext_resource type="PackedScene" uid="uid://cp8h1hwg52x31" path="res://track/track.tscn" id="2_a0dt8"]
-[ext_resource type="Texture2D" uid="uid://x3r7qp3ceiu" path="res://map/assets/AdobeStock_394486190.jpeg" id="3_4hjbm"]
-[ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="4_lgq1i"]
+[ext_resource type="Script" uid="uid://cyqfvhl72mt3g" path="res://map/map.gd" id="1_5jdw0"]
+[ext_resource type="PackedScene" uid="uid://gkp7hgfjxvu0" path="res://map/map_3d/map_3d.tscn" id="1_cn70m"]
+[ext_resource type="Script" uid="uid://clchosgdufaln" path="res://components/parallax_auto_scroller/parallax_auto_scroller.gd" id="2_dje7r"]
+[ext_resource type="Texture2D" uid="uid://dd4ytua83oq10" path="res://map/assets/texture_09.png" id="3_ayor4"]
+[ext_resource type="PackedScene" uid="uid://cwno3upmbut3a" path="res://train/train.tscn" id="4_lvomx"]
+[ext_resource type="PackedScene" uid="uid://yysv0g68tg2x" path="res://character/player/player.tscn" id="5_tjure"]
+[ext_resource type="Script" uid="uid://w4p426bbuk2l" path="res://components/main_camera.gd" id="6_xnt8k"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_a0dt8"]
-size = Vector2(1000, 1000)
+[sub_resource type="ViewportTexture" id="ViewportTexture_5oqum"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hjbm"]
-albedo_texture = ExtResource("1_hgrid")
-uv1_scale = Vector3(1000, 1000, 1000)
+[node name="Map" type="Node2D"]
+script = ExtResource("1_5jdw0")
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgq1i"]
-panorama = ExtResource("3_4hjbm")
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
 
-[sub_resource type="Sky" id="Sky_4hjbm"]
-sky_material = SubResource("PanoramaSkyMaterial_lgq1i")
+[node name="Map3D" parent="SubViewport" instance=ExtResource("1_cn70m")]
+unique_name_in_owner = true
 
-[sub_resource type="Environment" id="Environment_lgq1i"]
-background_mode = 2
-sky = SubResource("Sky_4hjbm")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lgq1i"]
-dof_blur_far_enabled = true
-dof_blur_far_distance = 20.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Map" type="Node3D"]
+[node name="Map" type="TextureRect" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_5oqum")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_a0dt8")
-surface_material_override/0 = SubResource("StandardMaterial3D_4hjbm")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.713703, 0.700449, 0, -0.700449, 0.713703, 0, 2.06928, 0)
-light_energy = 0.5
+[node name="TrackAutoScroll" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1024, 0)
+script = ExtResource("2_dje7r")
+speed = -800.0
 
-[node name="Track" parent="." instance=ExtResource("2_a0dt8")]
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/TrackAutoScroll"]
+position = Vector2(0, 703)
+scale = Vector2(2, 1)
+texture = ExtResource("3_ayor4")
+centered = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lgq1i")
-camera_attributes = SubResource("CameraAttributesPractical_lgq1i")
+[node name="Train" parent="." instance=ExtResource("4_lvomx")]
+position = Vector2(-101, 267)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 0, 3.32284, 99.6762)
-billboard = 2
-texture = ExtResource("4_lgq1i")
+[node name="Player" parent="." instance=ExtResource("5_tjure")]
+position = Vector2(46, 593)
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 0, 3.32284, -22.6391)
-billboard = 2
-texture = ExtResource("4_lgq1i")
-
-[node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 25.4624, 3.32284, -22.6391)
-billboard = 2
-texture = ExtResource("4_lgq1i")
+[node name="MoveCamera" type="Camera2D" parent="Player"]
+position = Vector2(0, -233)
+position_smoothing_enabled = true
+script = ExtResource("6_xnt8k")
+metadata/_custom_type_script = "uid://w4p426bbuk2l"

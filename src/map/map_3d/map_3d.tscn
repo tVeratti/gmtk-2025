@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=3 uid="uid://gkp7hgfjxvu0"]
+
+[ext_resource type="Texture2D" uid="uid://dd4ytua83oq10" path="res://map/assets/texture_09.png" id="1_hgrid"]
+[ext_resource type="Script" uid="uid://xalnj75he8jm" path="res://map/map_3d/map_3d.gd" id="1_llq3w"]
+[ext_resource type="PackedScene" uid="uid://cp8h1hwg52x31" path="res://track/track.tscn" id="2_a0dt8"]
+[ext_resource type="Texture2D" uid="uid://boou0v3qtltew" path="res://map/assets/skybox.png" id="2_a0762"]
+[ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="4_lgq1i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgq1i"]
+panorama = ExtResource("2_a0762")
+
+[sub_resource type="Sky" id="Sky_4hjbm"]
+sky_material = SubResource("PanoramaSkyMaterial_lgq1i")
+
+[sub_resource type="Environment" id="Environment_lgq1i"]
+background_mode = 2
+sky = SubResource("Sky_4hjbm")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lgq1i"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 20.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a0dt8"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hjbm"]
+albedo_texture = ExtResource("1_hgrid")
+uv1_scale = Vector3(1000, 1000, 1000)
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_llq3w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lgq1i")
+camera_attributes = SubResource("CameraAttributesPractical_lgq1i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.713703, 0.700449, 0, -0.700449, 0.713703, 0, 2.06928, 0)
+light_energy = 0.5
+
+[node name="Track" parent="." instance=ExtResource("2_a0dt8")]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_a0dt8")
+surface_material_override/0 = SubResource("StandardMaterial3D_4hjbm")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 0, 3.32284, 99.6762)
+billboard = 2
+texture = ExtResource("4_lgq1i")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 0, 3.32284, -22.6391)
+billboard = 2
+texture = ExtResource("4_lgq1i")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 20, 0, 0, 0, 4, 25.4624, 3.32284, -22.6391)
+billboard = 2
+texture = ExtResource("4_lgq1i")
