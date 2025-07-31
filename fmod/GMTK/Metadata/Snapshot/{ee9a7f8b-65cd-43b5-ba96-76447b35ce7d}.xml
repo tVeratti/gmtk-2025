@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Snapshot" id="{ee9a7f8b-65cd-43b5-ba96-76447b35ce7d}">
 		<property name="name">
-			<value>Inside</value>
+			<value>InsideSNPSHT</value>
 		</property>
 		<relationship name="mixer">
 			<destination>{4f7ac0d4-8f93-4760-806b-cf202a017106}</destination>
@@ -38,6 +38,9 @@
 		<property name="value">
 			<value>-40</value>
 		</property>
+		<relationship name="automators">
+			<destination>{19df72d5-2836-4bf5-aeff-1737bd86a128}</destination>
+		</relationship>
 		<relationship name="automatableObject">
 			<destination>{95b3b546-d190-482c-b1f7-1182abf13a0e}</destination>
 		</relationship>
@@ -49,13 +52,96 @@
 		<property name="value">
 			<value>-15</value>
 		</property>
+		<relationship name="automators">
+			<destination>{e006b33f-1c1c-40da-94ef-2c250de79d9e}</destination>
+		</relationship>
 		<relationship name="automatableObject">
 			<destination>{95b3b546-d190-482c-b1f7-1182abf13a0e}</destination>
 		</relationship>
 	</object>
 	<object class="SnapshotTrack" id="{0f5f45bc-c08e-47e5-b15f-deb062f474b2}">
+		<relationship name="automationTracks">
+			<destination>{ca610413-f0f3-4ea9-a7dd-8bb6d9b878f7}</destination>
+			<destination>{ae0975b9-04e8-4a84-b234-9ca93c2ed1a2}</destination>
+		</relationship>
 		<relationship name="mixerStrip">
 			<destination>{a44c08c9-6ac9-4fec-9c01-2182f1e19851}</destination>
 		</relationship>
+	</object>
+	<object class="Automator" id="{19df72d5-2836-4bf5-aeff-1737bd86a128}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>value</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{4a508407-4d0a-454c-9e9c-1d8d8aca1115}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{e006b33f-1c1c-40da-94ef-2c250de79d9e}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>value</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{1c07964e-beb8-476c-a62b-4f5dd16b2c6e}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationTrack" id="{ca610413-f0f3-4ea9-a7dd-8bb6d9b878f7}">
+		<relationship name="automator">
+			<destination>{19df72d5-2836-4bf5-aeff-1737bd86a128}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationTrack" id="{ae0975b9-04e8-4a84-b234-9ca93c2ed1a2}">
+		<relationship name="automator">
+			<destination>{e006b33f-1c1c-40da-94ef-2c250de79d9e}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{4a508407-4d0a-454c-9e9c-1d8d8aca1115}">
+		<relationship name="parameter">
+			<destination>{74cb7014-eaa3-4b2e-b5fe-eb56730c05ec}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{1d210a7c-323e-4956-ae27-184ea835601c}</destination>
+			<destination>{42fa48b3-d4a7-4d2d-b868-6e3d8ba60342}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{1c07964e-beb8-476c-a62b-4f5dd16b2c6e}">
+		<relationship name="parameter">
+			<destination>{74cb7014-eaa3-4b2e-b5fe-eb56730c05ec}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{31b94053-2fc5-44eb-8d58-f21ede4d3398}</destination>
+			<destination>{19f96dfa-0afb-498d-966e-5f207f3c7905}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{1d210a7c-323e-4956-ae27-184ea835601c}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{42fa48b3-d4a7-4d2d-b868-6e3d8ba60342}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>-40</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{31b94053-2fc5-44eb-8d58-f21ede4d3398}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{19f96dfa-0afb-498d-966e-5f207f3c7905}">
+		<property name="position">
+			<value>0.99011299435028244</value>
+		</property>
+		<property name="value">
+			<value>-15</value>
+		</property>
 	</object>
 </objects>
