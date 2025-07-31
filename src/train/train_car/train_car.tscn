@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://q5inrad673eu"]
+[gd_scene load_steps=6 format=3 uid="uid://q5inrad673eu"]
 
-[ext_resource type="Texture2D" uid="uid://3fpvseargnjf" path="res://train/assets/car.png" id="1_fwggs"]
+[ext_resource type="Script" uid="uid://mwmjbw4h5atj" path="res://train/train_car/train_car.gd" id="1_epm51"]
+[ext_resource type="Texture2D" uid="uid://3fpvseargnjf" path="res://train/assets/car.png" id="2_1auyj"]
+[ext_resource type="Script" uid="uid://cvss8a1areo2m" path="res://train/train_car/train_car_passengers.gd" id="2_wg80q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwggs"]
 size = Vector2(20, 448)
@@ -9,10 +11,16 @@ size = Vector2(20, 448)
 size = Vector2(20, 1231)
 
 [node name="TrainCar" type="Node2D"]
+script = ExtResource("1_epm51")
 
-[node name="Car" type="Sprite2D" parent="."]
+[node name="Passengers" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_wg80q")
+metadata/_custom_type_script = "uid://cvss8a1areo2m"
+
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(577, 362)
-texture = ExtResource("1_fwggs")
+texture = ExtResource("2_1auyj")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -38,3 +46,9 @@ shape = SubResource("RectangleShape2D_apqtr")
 position = Vector2(575, 131)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_apqtr")
+
+[node name="Capacity" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Capacity 2/3"

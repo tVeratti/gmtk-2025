@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwno3upmbut3a"]
+[gd_scene load_steps=4 format=3 uid="uid://cwno3upmbut3a"]
 
 [ext_resource type="Script" uid="uid://2asv3xk8tiua" path="res://train/train.gd" id="1_m5eja"]
-[ext_resource type="PackedScene" uid="uid://q5inrad673eu" path="res://train/train_car.tscn" id="1_wbttr"]
+[ext_resource type="Script" uid="uid://bc2tmqnkxb2fr" path="res://train/train_passengers.gd" id="2_jnyq2"]
+[ext_resource type="Script" uid="uid://bfd88vxx42apg" path="res://train/bumps.gd" id="2_m5eja"]
 
 [node name="Train" type="Node2D"]
 script = ExtResource("1_m5eja")
 
-[node name="TrainCar" parent="." instance=ExtResource("1_wbttr")]
+[node name="Passengers" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_jnyq2")
+metadata/_custom_type_script = "uid://bc2tmqnkxb2fr"
 
-[node name="TrainCar2" parent="." instance=ExtResource("1_wbttr")]
-position = Vector2(1268, 0)
+[node name="Bumps" type="Node" parent="."]
+script = ExtResource("2_m5eja")
+metadata/_custom_type_script = "uid://bfd88vxx42apg"
 
-[node name="TrainCar3" parent="." instance=ExtResource("1_wbttr")]
-position = Vector2(2541, 0)
+[node name="TrainCars" type="Node2D" parent="."]
+unique_name_in_owner = true

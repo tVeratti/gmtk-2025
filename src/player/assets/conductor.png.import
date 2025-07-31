@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8h8u4t3s87k1"
-path="res://.godot/imported/conductor.png-6008a8feeb9aeb474de89f4b931bcbda.ctex"
+path="res://.godot/imported/conductor.png-f4d56a81bcc72dd5932ee29e7066608e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character/player/assets/conductor.png"
-dest_files=["res://.godot/imported/conductor.png-6008a8feeb9aeb474de89f4b931bcbda.ctex"]
+source_file="res://player/assets/conductor.png"
+dest_files=["res://.godot/imported/conductor.png-f4d56a81bcc72dd5932ee29e7066608e.ctex"]
 
 [params]
 

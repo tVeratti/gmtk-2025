@@ -1,39 +1,50 @@
+class_name Train
 extends Node2D
 
 
-const BUMP_MIN_TIMER:float = 0.3
-const BUMP_MAX_TIMER:float = 1.3
-const BUMP_DELAY:float = 0.3
-
-const BUMP_AMOUNT_MIN:float = 1.0
-const BUMP_AMOUNT_MAX:float = 2.0
-const BUMP_LARGE_THRESHOLD:float = 0.8
+signal train_cars_ready
 
 
-@onready var train_cars:Array = get_children()
+const TRAIN_CAR_GAP:float = 30.0
+
+
+@export var train_car_scene = load("uid://q5inrad673eu")
+@export var train_car_count:int = 3
+
+
+@onready var train_cars_root:Node2D = %TrainCars
+@onready var passengers:TrainPassengers = %Passengers
+
+
+var train_cars:Array = []
 
 
 func _ready() -> void:
-	train_cars.reverse()
-	_start_bump_timer()
-
-
-func add_bump() -> void:
-	var amount = -randf_range(BUMP_AMOUNT_MIN, BUMP_AMOUNT_MAX)
-	if randf() > BUMP_LARGE_THRESHOLD:
-		amount *= 2.0
+	for i in range(train_car_count):
+		_add_train_car()
 	
-	var index:int = 0
-	for train_car in train_cars:
-		var tween: = get_tree().create_tween()
-		tween.tween_property(train_car, "position:y", amount, 0.3).set_delay(index * BUMP_DELAY)
-		tween.tween_property(train_car, "position:y", 0.0, 0.3)
-		index += 1
+	train_cars_ready.emit()
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		_test_boarding()
 	
-	_start_bump_timer()
+	if Input.is_action_just_pressed("ui_cancel"):
+		_test_disembarking()
 
 
-func _start_bump_timer(_x = null) -> void:
-	var random_time = randf_range(BUMP_MIN_TIMER, BUMP_MAX_TIMER)
-	var bump_timer = get_tree().create_timer(random_time)
-	bump_timer.timeout.connect(add_bump)
+func _add_train_car() -> void:
+	var index = train_cars.size()
+	var train_car:TrainCar = train_car_scene.instantiate()
+	train_cars_root.add_child(train_car)
+	train_car.position.x = -index * (train_car.sprite.texture.get_width() + TRAIN_CAR_GAP)
+	train_cars.append(train_car)
+
+
+func _test_boarding() -> void:
+	passengers.try_board_passengers(1, 0)
+
+
+func _test_disembarking() -> void:
+	passengers.try_disembark_passengers(1)
