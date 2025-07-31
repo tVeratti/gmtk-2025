@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.03.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{f01a525c-75a5-4850-bc2b-0cc3374bfc61}">
 		<relationship name="projectSettings">
 			<destination>{013bdc7f-fbbb-4e85-89a0-57f2db0a4bf0}</destination>
@@ -13,7 +13,7 @@
 			<value>Event Editor 1</value>
 		</property>
 		<property name="windowLayout">
-			<value>AAAAAQAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAAAP////gAAAn/AAAFdwAAA8AAAAHMAAAH3wAAA28AAAAAAgAAAAoAAAAAAAAAABcAAAn/AAAFdw==</value>
+			<value>AAAAAgAAABwARQB2AGUAbgB0ACAARQBkAGkAdABvAHIAIAAxAAAAQgHZ0MsAAwAAAAAAAP////gAAAn/AAAFdwAAA8AAAAHMAAAH3wAAA28AAAAAAgAAAAoAAAAAAAAAABcAAAn/AAAFdwAAAB4ARQB2AGUAbgB0ACAAQgByAG8AdwBzAGUAcgAgADEAAABCAdnQywADAAAAAAL3AAAAgQAABIgAAANwAAAC+AAAAKAAAASHAAADbwAAAAAAAAAAB4AAAAL4AAAAoAAABIcAAANv</value>
 		</property>
 		<relationship name="activePlatform">
 			<destination>{a4fc7b1b-313e-4c89-825b-d23ece5fbcc3}</destination>
