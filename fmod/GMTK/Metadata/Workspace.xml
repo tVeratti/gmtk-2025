@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{f01a525c-75a5-4850-bc2b-0cc3374bfc61}">
 		<property name="builtBanksOutputDirectory">
-			<value>D:/Unity Projects/gmtk-2025/fmod/Banks</value>
+			<value>../../src/fmod/Banks</value>
 		</property>
 		<relationship name="masterEventFolder">
 			<destination>{16a78112-8fdc-4598-9e79-49097d7ef258}</destination>

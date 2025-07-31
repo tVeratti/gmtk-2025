@@ -129,3 +129,5 @@ sprite_frames = SubResource("SpriteFrames_jo6ux")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.0139252
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
