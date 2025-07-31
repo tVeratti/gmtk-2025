@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cbp8tfldtdhut" path="res://character/player/player_state/idle.gd" id="2_gtsfv"]
 [ext_resource type="Script" uid="uid://b1yrpp1rep1l7" path="res://character/player/player_state/move.gd" id="3_gtsfv"]
 [ext_resource type="Texture2D" uid="uid://d0au448wot7bu" path="res://character/player/assets/IMG_1230.png" id="6_eu8pa"]
-[ext_resource type="Texture2D" uid="uid://dfatw7rwi0uty" path="res://character/player/assets/sprite_sheet.png" id="7_noxpy"]
+[ext_resource type="Texture2D" uid="uid://8h8u4t3s87k1" path="res://character/player/assets/sprite_sheet (2).png" id="7_noxpy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu8pa"]
 radius = 50.0
@@ -18,35 +18,35 @@ region = Rect2(600, 300, 540, 480)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cf6c"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(0, 0, 1920, 1080)
+region = Rect2(0, 0, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v2h1c"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(1920, 0, 1920, 1080)
+region = Rect2(528, 0, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qh58e"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(3840, 0, 1920, 1080)
+region = Rect2(1056, 0, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hr31g"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(0, 1080, 1920, 1080)
+region = Rect2(0, 452, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqp71"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(1920, 1080, 1920, 1080)
+region = Rect2(528, 452, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vuhga"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(3840, 1080, 1920, 1080)
+region = Rect2(1056, 452, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_muf2e"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(0, 2160, 1920, 1080)
+region = Rect2(0, 904, 528, 452)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkbv7"]
 atlas = ExtResource("7_noxpy")
-region = Rect2(1920, 2160, 1920, 1080)
+region = Rect2(528, 904, 528, 452)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jo6ux"]
 animations = [{
@@ -124,8 +124,8 @@ unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
-position = Vector2(147, -23)
 sprite_frames = SubResource("SpriteFrames_jo6ux")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.532663
+frame = 4
+frame_progress = 0.465297
