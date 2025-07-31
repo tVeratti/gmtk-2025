@@ -51,6 +51,10 @@ project/assembly_name="gmtk-2025"
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
+[global_group]
+
+seat="position a ghost can be added to train car"
+
 [input]
 
 ui_left={

@@ -14,8 +14,15 @@ var stop_station_index:int
 var blocker:Blocker
 
 
+@onready var destination_label:Label = %Destination
+
+
+func _ready() -> void:
+	destination_label.text = "Destination: %s" % stop_station_index
+
+
 func can_disembark(station_index:int) -> bool:
-	if station_index < stop_station_index:
+	if station_index != stop_station_index:
 		return false
 	
 	return not blocker or blocker.is_solved

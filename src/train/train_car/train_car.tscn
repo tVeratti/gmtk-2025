@@ -52,3 +52,17 @@ unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Capacity 2/3"
+
+[node name="Seats" type="Node2D" parent="."]
+
+[node name="Seat" type="Marker2D" parent="Seats" groups=["seat"]]
+position = Vector2(98, 420)
+
+[node name="Seat2" type="Marker2D" parent="Seats" groups=["seat"]]
+position = Vector2(398, 416)
+
+[node name="Seat3" type="Marker2D" parent="Seats" groups=["seat"]]
+position = Vector2(693, 416)
+
+[node name="Seat4" type="Marker2D" parent="Seats" groups=["seat"]]
+position = Vector2(955, 417)

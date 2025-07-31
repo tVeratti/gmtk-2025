@@ -18,11 +18,11 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 		return
 	
 	var new_ghosts: = Array()
-	new_ghosts.resize(amount)
-	new_ghosts.fill(ghost_scene.instantiate())
-	for ghost in new_ghosts:
+	for i in range(amount):
+		var ghost:Ghost = ghost_scene.instantiate()
 		ghost.start_station_index = station_index
-		ghost.stop_station_index = station_index + (randi() % 3)
+		ghost.stop_station_index = (station_index + (randi() % 3)) % MapManager.stations.size()
+		new_ghosts.append(ghost)
 	
 	var train_car:TrainCar = cars_with_capacity.pop_back()
 	while not new_ghosts.is_empty():

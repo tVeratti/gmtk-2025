@@ -30,25 +30,9 @@ func _ready() -> void:
 	train_cars_ready.emit()
 
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		_test_boarding()
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		_test_disembarking()
-
-
 func _add_train_car() -> void:
 	var index = train_cars.size()
 	var train_car:TrainCar = train_car_scene.instantiate()
 	train_cars_root.add_child(train_car)
 	train_car.position.x = -index * (train_car.sprite.texture.get_width() + TRAIN_CAR_GAP)
 	train_cars.append(train_car)
-
-
-func _test_boarding() -> void:
-	passengers.try_board_passengers(1, 0)
-
-
-func _test_disembarking() -> void:
-	passengers.try_disembark_passengers(1)

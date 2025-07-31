@@ -12,6 +12,8 @@ func enter(data = {}) -> void:
 	print("stop ", data)
 	train.info.text = "Approaching Station %s" % data.station_index
 	station = MapManager.stations[data.station_index]
+	
+	MapManager.station_approaching.emit(station)
 
 
 func update(delta) -> void:

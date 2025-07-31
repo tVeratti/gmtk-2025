@@ -2,6 +2,7 @@ extends Node
 
 
 signal station_ready
+signal station_approaching(station:Station)
 
 
 var track_position:float = 0.0
