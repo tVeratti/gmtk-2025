@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{93e93bba-d9b1-4f23-8204-2889aa61d47f}">
+		<property name="assetPath">
+			<value>train1_amb.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>16.502040816326531</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b7d6dd5d-836a-42d6-b555-194b413d4351}</destination>
+		</relationship>
+	</object>
+</objects>
