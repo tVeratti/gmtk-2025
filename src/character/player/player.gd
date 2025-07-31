@@ -5,8 +5,9 @@ extends CharacterBody2D
 @onready var state:Label = %State
 @onready var player_controller:PlayerController = %PlayerController
 @onready var state_machine:StateMachineComponent = %StateMachineComponent
+
 @onready var visual_root:Node2D = %VisualRoot
-@onready var animated_sprite_2d:AnimatedSprite2D = $VisualRoot/AnimatedSprite2D
+@onready var animated_sprite_2d:AnimatedSprite2D = %AnimatedSprite2D
 
 
 

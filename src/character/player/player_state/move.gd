@@ -2,6 +2,10 @@ class_name PlayerMove
 extends PlayerState
 
 
+func enter(_data := {}) -> void:
+	player.animated_sprite_2d.play("walk")
+
+
 func update(_delta: float) -> void:
 	var direction: = player.player_controller.direction
 	
