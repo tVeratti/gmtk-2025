@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cbp8tfldtdhut" path="res://character/player/player_state/idle.gd" id="2_gtsfv"]
 [ext_resource type="Script" uid="uid://b1yrpp1rep1l7" path="res://character/player/player_state/move.gd" id="3_gtsfv"]
 [ext_resource type="Texture2D" uid="uid://d0au448wot7bu" path="res://character/player/assets/IMG_1230.png" id="6_eu8pa"]
-[ext_resource type="Texture2D" uid="uid://8h8u4t3s87k1" path="res://character/player/assets/sprite_sheet (2).png" id="7_noxpy"]
+[ext_resource type="Texture2D" uid="uid://8h8u4t3s87k1" path="res://character/player/assets/conductor.png" id="7_noxpy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu8pa"]
 radius = 50.0
@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -124,8 +124,8 @@ unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
+position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_jo6ux")
 animation = &"walk"
 autoplay = "walk"
-frame = 4
-frame_progress = 0.465297
+frame_progress = 0.0139252

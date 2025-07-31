@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwno3upmbut3a"]
+[gd_scene load_steps=3 format=3 uid="uid://cwno3upmbut3a"]
 
+[ext_resource type="Script" uid="uid://2asv3xk8tiua" path="res://train/train.gd" id="1_m5eja"]
 [ext_resource type="PackedScene" uid="uid://q5inrad673eu" path="res://train/train_car.tscn" id="1_wbttr"]
 
 [node name="Train" type="Node2D"]
+script = ExtResource("1_m5eja")
 
 [node name="TrainCar" parent="." instance=ExtResource("1_wbttr")]
 
