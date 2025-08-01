@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://5aa0f3kbnxk3"]
+[gd_scene load_steps=15 format=3 uid="uid://5aa0f3kbnxk3"]
 
 [ext_resource type="Script" uid="uid://ckcvnpxdg6jms" path="res://ghost/ghost.gd" id="1_xe3x1"]
-[ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_2iaaw"]
+[ext_resource type="Script" uid="uid://b3rwud8fo4tjj" path="res://ghost/sprite_selector.gd" id="2_sbw1e"]
+[ext_resource type="Script" uid="uid://c7o1ov0f1f5wy" path="res://components/state_machine/state_machine.gd" id="3_mrk1n"]
 [ext_resource type="PackedScene" uid="uid://cftgf0k2vg1lw" path="res://ghost/ghost_ticket/ghost_ticket.tscn" id="3_tqhd8"]
+[ext_resource type="Script" uid="uid://dou8f4kbtmxjo" path="res://ghost/ghost_state/idle.gd" id="4_lpkf8"]
+[ext_resource type="Script" uid="uid://uesjtw0jb5cg" path="res://ghost/ghost_state/sit.gd" id="5_g6uso"]
+[ext_resource type="Script" uid="uid://duvdxeb1qukv" path="res://ghost/ghost_state/board.gd" id="6_salmi"]
+[ext_resource type="Script" uid="uid://x2ne3limjyh2" path="res://ghost/ghost_state/disembark.gd" id="7_flsxg"]
+[ext_resource type="Texture2D" uid="uid://b5j7f7f6bmpy7" path="res://ghost/assets/ghost_a/ghost_a_stand.png" id="9_lpkf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iaaw"]
 size = Vector2(120, 120)
@@ -10,27 +16,92 @@ size = Vector2(120, 120)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iaaw"]
 radius = 100.0
 
+[sub_resource type="Animation" id="Animation_g6uso"]
+resource_name = "float"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualRoot/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_salmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualRoot/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flsxg"]
+_data = {
+&"RESET": SubResource("Animation_salmi"),
+&"float": SubResource("Animation_g6uso")
+}
+
 [node name="Ghost" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_xe3x1")
 
+[node name="GhostSpriteSelector" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_sbw1e")
+metadata/_custom_type_script = "uid://b3rwud8fo4tjj"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("3_mrk1n")
+initial_state = NodePath("Board")
+metadata/_custom_type_script = "uid://c7o1ov0f1f5wy"
+
+[node name="Board" type="Node" parent="StateMachine"]
+script = ExtResource("6_salmi")
+
+[node name="Sit" type="Node" parent="StateMachine"]
+script = ExtResource("5_g6uso")
+
+[node name="Disembark" type="Node" parent="StateMachine"]
+script = ExtResource("7_flsxg")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_lpkf8")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2iaaw")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.407843)
-texture = ExtResource("2_2iaaw")
 
 [node name="Destination" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -54.0
-offset_top = -91.0
+offset_top = -205.0
 offset_right = 54.0
-offset_bottom = -68.0
+offset_bottom = -182.0
 text = "Destination: 1"
 
+[node name="State" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -54.0
+offset_top = -183.0
+offset_right = 54.0
+offset_bottom = -160.0
+text = "Idle"
+
 [node name="InteractArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
@@ -39,6 +110,21 @@ shape = SubResource("CircleShape2D_2iaaw")
 [node name="GhostTicket" parent="." instance=ExtResource("3_tqhd8")]
 unique_name_in_owner = true
 position = Vector2(0, -42)
+
+[node name="VisualRoot" type="CanvasGroup" parent="."]
+position = Vector2(0, -81)
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.407843)
+texture = ExtResource("9_lpkf8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VisualRoot"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_flsxg")
+}
+autoplay = "float"
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

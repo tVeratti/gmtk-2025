@@ -2,12 +2,22 @@
 extends TrainState
 
 
+var station_data
+
+
 func enter(data := {}) -> void:
-	train.info.text = "Boarding (%s) at Station %s" % [data.num_boarders, data.station_index]
+	station_data = data
+	train.info.text = "Boarding (%s) at Station %s" % [data.num_boarders, data.station_name]
 	train.passengers.try_board_passengers(
 		data.num_boarders,
 		data.station_index)
 	
-	# TODO: Connect signal to await boarding animations
-	await get_tree().create_timer(1.0).timeout
-	finished.emit(TRANSIT, data)
+	train.passengers_boarded.connect(_on_train_car_disembarked)
+
+
+func exit() -> void:
+	train.passengers_boarded.disconnect(_on_train_car_disembarked)
+
+
+func _on_train_car_disembarked() -> void:
+	finished.emit(TRANSIT, station_data)

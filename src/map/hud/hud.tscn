@@ -13,21 +13,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ppxrw")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(343, 203)
+[node name="MiniMap" type="Node2D" parent="."]
+position = Vector2(1616, 160)
 
-[node name="Line2D" type="Line2D" parent="Node2D"]
+[node name="Line2D" type="Line2D" parent="MiniMap"]
 unique_name_in_owner = true
 points = PackedVector2Array(30, 16, 2, 54, 65, 104, 121, 85, 146, -17, 82, -23, 43, -9)
 closed = true
 
-[node name="Path2D" type="Path2D" parent="Node2D"]
+[node name="Path2D" type="Path2D" parent="MiniMap"]
 unique_name_in_owner = true
 curve = SubResource("Curve2D_kkii1")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Node2D/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniMap/Path2D"]
 unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Path2D/PathFollow2D"]
-scale = Vector2(0.5, 0.5)
+[node name="Train" type="Sprite2D" parent="MiniMap/Path2D/PathFollow2D"]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_kkii1")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2

@@ -2,6 +2,11 @@ class_name Ghost
 extends Node
 
 
+signal boarded
+signal disembarking
+signal disembarked
+
+
 var id:String = UUID.v4_short()
 
 ## Station index where the ghost got on the train
@@ -16,12 +21,30 @@ var blocker:Blocker
 var has_missed_station:bool = false
 
 
-@onready var ticket:GhostTicket = %GhostTicket
+var stand_texture:Texture
+var sit_texture:Texture
+
+
+@onready var ghost_sprite_selector = %GhostSpriteSelector
+@onready var sprite_2d:Sprite2D = %Sprite2D
+
 @onready var destination_label:Label = %Destination
+@onready var state:Label = %State
+
+@onready var ticket:GhostTicket = %GhostTicket
+@onready var state_machine:StateMachineComponent = %StateMachine
 
 
 func _ready() -> void:
+	var textures = ghost_sprite_selector.get_random_sprites()
+	sit_texture = textures[0]
+	stand_texture = textures[1]
+	
 	destination_label.text = "Destination: %s" % stop_station_index
+
+
+func _process(delta):
+	state.text = state_machine.state.name
 
 
 func can_disembark(station_index:int) -> bool:
@@ -35,6 +58,14 @@ func can_disembark(station_index:int) -> bool:
 		# The ghost wanted to disembark at this station but was blocked
 		has_missed_station = true
 		return false
+
+
+func set_standing() -> void:
+	sprite_2d.texture = stand_texture
+
+
+func set_sitting() -> void:
+	sprite_2d.texture = sit_texture
 
 
 func _on_interact_area_body_entered(body):

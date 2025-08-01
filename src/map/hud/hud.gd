@@ -4,6 +4,9 @@ extends Control
 @export var map_3d:Map3D
 
 
+var station_label_scene = load("uid://df0ehva33767t")
+
+
 @onready var path_2d:Path2D = %Path2D
 @onready var path_follow_2d:PathFollow2D = %PathFollow2D
 @onready var line_2d:Line2D = %Line2D
@@ -12,6 +15,16 @@ extends Control
 func _ready() -> void:
 	path_2d.curve = _get_track_curve()
 	line_2d.points = path_2d.curve.get_baked_points()
+	
+	for station in MapManager.stations:
+		var station_label:PathFollow2D = station_label_scene.instantiate()
+		var label = station_label.get_node("Label")
+		label.text = station.station_name
+		path_2d.add_child(station_label)
+		path_2d.move_child(station_label, 0)
+		#label.
+		station_label.progress_ratio = station.track_position
+		
 
 
 func _process(_delta):

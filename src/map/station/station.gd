@@ -6,6 +6,7 @@ const MIN_BOARDERS:int = 2
 const MAX_BOARDERS:int = 6
 
 
+@export var station_name:String = "A"
 @export var track_position:float = 0.0
 
 

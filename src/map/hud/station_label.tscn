@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://df0ehva33767t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwb3m"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_kwb3m"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="StationLabelRoot" type="PathFollow2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kwb3m")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -11.0
+offset_top = 9.0
+offset_right = 1909.0
+offset_bottom = 54.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "A"
+label_settings = SubResource("LabelSettings_kwb3m")

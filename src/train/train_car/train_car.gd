@@ -24,20 +24,21 @@ func _ready() -> void:
 	_update_capacity_label()
 
 
+func add_ghosts_to_seat(ghosts:Array) -> void:
+	for g in ghosts:
+		var seat = open_seats.pop_back()
+		seat.add_child(g)
+
+
 func _on_passengers_disembarked(ghosts) -> void:
 	for g in ghosts:
 		var seat:Node2D = g.get_parent()
 		open_seats.append(seat)
-		g.queue_free()
 	
 	_update_capacity_label()
 
 
 func _on_passengers_boarded(ghosts) -> void:
-	for g in ghosts:
-		var seat = open_seats.pop_back()
-		seat.add_child(g)
-	
 	_update_capacity_label()
 
 
