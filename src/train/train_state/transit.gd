@@ -13,15 +13,12 @@ var next_station:Station
 
 func enter(data := {}) -> void:
 	previous_station_index = data.station_index
-	var next_station_index = previous_station_index + 1
-	if next_station_index > MapManager.stations.size() - 1:
-		next_station_index = 0
+	var next_station_index = _get_next_index(previous_station_index)
 	
 	next_station = MapManager.stations[next_station_index]
-	var next_position = _get_next_position(next_station)
-	
 	train.info.text = "Transit to Station %s" % next_station_index
 	
+	var next_position = _get_next_position(next_station)
 	# Tween to 90% of the next station, then transition to stopping/braking
 	var transit_tween: = get_tree().create_tween()
 	transit_tween.set_trans(Tween.TRANS_SINE)

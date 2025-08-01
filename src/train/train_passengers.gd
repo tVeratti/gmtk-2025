@@ -19,9 +19,7 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 	
 	var new_ghosts: = Array()
 	for i in range(amount):
-		var ghost:Ghost = ghost_scene.instantiate()
-		ghost.start_station_index = station_index
-		ghost.stop_station_index = (station_index + (randi() % 3)) % MapManager.stations.size()
+		var ghost: = _create_ghost_passenger(station_index)
 		new_ghosts.append(ghost)
 	
 	var train_car:TrainCar = cars_with_capacity.pop_back()
@@ -40,3 +38,14 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 func try_disembark_passengers(station_index:int) -> void:
 	for train_car in owner.train_cars:
 		train_car.passengers.check_passengers_disembarking(station_index)
+
+
+func _create_ghost_passenger(station_index:int) -> Ghost:
+	var num_stations:int = MapManager.stations.size()
+	var ghost:Ghost = ghost_scene.instantiate()
+	ghost.start_station_index = station_index
+	
+	var delta:int = (randi() % (num_stations - 1)) + 1
+	ghost.stop_station_index = (station_index + delta) % num_stations
+	
+	return ghost
