@@ -6,5 +6,5 @@ extends Node3D
 @onready var path_follow_3d:PathFollow3D = %PathFollow3D
 
 
-func _process(delta):
+func _process(_delta):
 	path_follow_3d.progress_ratio = -MapManager.track_position

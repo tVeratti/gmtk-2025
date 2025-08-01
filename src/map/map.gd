@@ -14,7 +14,8 @@ func _ready() -> void:
 
 
 func _process(delta):
-	loop_progress += MapManager.train_speed * delta
-	loop_progress = loop_progress - int(loop_progress)
-	
-	MapManager.track_position = loop_progress
+	pass
+	#loop_progress += MapManager.train_speed * delta
+	#loop_progress = loop_progress - int(loop_progress)
+	#
+	#MapManager.track_position = loop_progress

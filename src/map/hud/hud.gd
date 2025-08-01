@@ -14,7 +14,7 @@ func _ready() -> void:
 	line_2d.points = path_2d.curve.get_baked_points()
 
 
-func _process(delta):
+func _process(_delta):
 	path_follow_2d.progress_ratio = MapManager.track_position
 
 

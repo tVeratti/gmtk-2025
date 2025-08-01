@@ -28,7 +28,6 @@ func _on_passengers_disembarked(ghosts) -> void:
 	for g in ghosts:
 		var seat:Node2D = g.get_parent()
 		open_seats.append(seat)
-		
 		g.queue_free()
 	
 	_update_capacity_label()

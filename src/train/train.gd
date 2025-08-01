@@ -3,7 +3,6 @@ extends Node2D
 
 
 signal train_cars_ready
-signal arrive_at_station
 
 
 const TRAIN_CAR_GAP:float = 30.0
