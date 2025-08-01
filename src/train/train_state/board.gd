@@ -3,7 +3,6 @@ extends TrainState
 
 
 func enter(data := {}) -> void:
-	print("board ", data)
 	train.info.text = "Boarding (%s) at Station %s" % [data.num_boarders, data.station_index]
 	train.passengers.try_board_passengers(
 		data.num_boarders,

@@ -41,11 +41,8 @@ light_energy = 0.5
 unique_name_in_owner = true
 
 [node name="PathFollow3D" parent="Track/Path3D" index="0"]
-transform = Transform3D(-0.92802, 0.00806909, 0.372323, 0.00869388, 0.999958, -1.42697e-10, -0.372307, 0.00323719, -0.928058, 117.781, 0, 63.2682)
+transform = Transform3D(-0.928021, 0.0080691, 0.372321, 0.00869388, 0.999958, 9.01151e-11, -0.372306, 0.00323718, -0.928059, 117.781, 0, 63.2681)
 progress = 270.967
-
-[node name="Sprite3D" parent="Track/Path3D/PathFollow3D" index="0"]
-visible = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_a0dt8")
