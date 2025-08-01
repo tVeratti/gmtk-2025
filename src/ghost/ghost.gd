@@ -7,6 +7,10 @@ signal disembarking
 signal disembarked
 
 
+const DISEMBARK_TIMER:float = 5.0
+const BOARD_TIMER:float = 5.0
+
+
 var id:String = UUID.v4_short()
 
 ## Station index where the ghost got on the train

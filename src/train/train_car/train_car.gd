@@ -24,7 +24,7 @@ func _ready() -> void:
 	_update_capacity_label()
 
 
-func add_ghosts_to_seat(ghosts:Array) -> void:
+func add_ghosts_to_seats(ghosts:Array) -> void:
 	for g in ghosts:
 		var seat = open_seats.pop_back()
 		seat.add_child(g)

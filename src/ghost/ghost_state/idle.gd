@@ -3,6 +3,7 @@ extends GhostState
 
 
 func enter(_data := {}) -> void:
+	ghost.modulate.a = 0.0
 	ghost.set_standing()
 	ghost.boarding.connect(_on_boarding)
 
