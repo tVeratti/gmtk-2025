@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{a441bf51-1737-4b1b-9e16-7f4fb221e60a}">
+		<property name="assetPath">
+			<value>trainstop1_1shot.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.555351473922903</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b7d6dd5d-836a-42d6-b555-194b413d4351}</destination>
+		</relationship>
+	</object>
+</objects>
