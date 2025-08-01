@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{3368c704-8342-4189-ad8c-de42bbb5ed50}">
+		<property name="name">
+			<value>train_motion</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4a572ee9-978b-4073-8479-76b2fbac75fb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f1288c6a-cc19-4efd-9e9d-2963c3472d94}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f1288c6a-cc19-4efd-9e9d-2963c3472d94}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Idle</value>
+			<value>Start</value>
+			<value>Stop</value>
+			<value>Go</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
