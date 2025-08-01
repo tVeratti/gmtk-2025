@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d:AnimatedSprite2D = %AnimatedSprite2D
 
 
-func _process(delta):
+func _process(_delta):
 	state.text = state_machine.state.name
 
 

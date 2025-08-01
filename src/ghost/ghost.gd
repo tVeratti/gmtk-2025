@@ -42,7 +42,7 @@ func _on_interact_area_body_entered(body):
 		ticket.animate_in(body)
 
 
-func _on_interact_area_body_exited(body):
+func _on_interact_area_body_exited(_body):
 	ticket.animate_out()
 
 

@@ -11,11 +11,3 @@ var loop_progress:float = 0.0
 
 func _ready() -> void:
 	player.global_position = train.train_cars[0].global_position + Vector2(300, 300)
-
-
-func _process(delta):
-	pass
-	#loop_progress += MapManager.train_speed * delta
-	#loop_progress = loop_progress - int(loop_progress)
-	#
-	#MapManager.track_position = loop_progress
