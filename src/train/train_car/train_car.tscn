@@ -56,13 +56,13 @@ text = "Capacity 2/3"
 [node name="Seats" type="Node2D" parent="."]
 
 [node name="Seat" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(98, 420)
+position = Vector2(118, 524)
 
 [node name="Seat2" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(398, 416)
+position = Vector2(418, 520)
 
 [node name="Seat3" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(693, 416)
+position = Vector2(713, 520)
 
 [node name="Seat4" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(955, 417)
+position = Vector2(975, 521)

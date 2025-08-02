@@ -51,3 +51,6 @@ offset_left = 354.0
 offset_top = 66.0
 offset_right = 394.0
 offset_bottom = 89.0
+
+[connection signal="train_passengers_boarded" from="Passengers" to="." method="_on_passengers_train_passengers_boarded"]
+[connection signal="train_passengers_disembarked" from="Passengers" to="." method="_on_passengers_train_passengers_disembarked"]

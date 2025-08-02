@@ -27,7 +27,6 @@ func check_passengers_disembarking(station_index:int) -> void:
 		# Remove disembarking passengers from the array
 		ghosts = ghosts.filter(func(g): return not disembarking.has(g))
 	
-	await get_tree().create_timer(Ghost.DISEMBARK_TIMER).timeout
 	disembarked.emit(disembarking)
 
 
@@ -49,9 +48,8 @@ func try_board_passengers(new_ghosts:Array) -> Array:
 	
 	if not boarding.is_empty():
 		ghosts.append_array(boarding)
-		train_car.add_ghosts_to_seats(ghosts)
+		train_car.add_ghosts_to_seats(boarding)
 	
-	await get_tree().create_timer(Ghost.BOARD_TIMER).timeout
 	boarded.emit(ghosts)
 	
 	return boarding

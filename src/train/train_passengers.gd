@@ -2,6 +2,10 @@ class_name TrainPassengers
 extends Node
 
 
+signal train_passengers_boarded
+signal train_passengers_disembarked
+
+
 @export var ghost_scene = load("uid://5aa0f3kbnxk3")
 
 
@@ -32,12 +36,18 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 			else:
 				# Try adding passengers to the next train car
 				train_car = cars_with_capacity.pop_back()
+	
+	await get_tree().create_timer(Ghost.BOARD_TIMER).timeout
+	train_passengers_boarded.emit()
 
 
 ## Check each train car for passengers that can disembark.
 func try_disembark_passengers(station_index:int) -> void:
 	for train_car in owner.train_cars:
 		train_car.passengers.check_passengers_disembarking(station_index)
+	
+	await get_tree().create_timer(Ghost.DISEMBARK_TIMER).timeout
+	train_passengers_disembarked.emit()
 
 
 func _create_ghost_passenger(station_index:int) -> Ghost:

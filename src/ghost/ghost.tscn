@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5aa0f3kbnxk3"]
+[gd_scene load_steps=14 format=3 uid="uid://5aa0f3kbnxk3"]
 
 [ext_resource type="Script" uid="uid://ckcvnpxdg6jms" path="res://ghost/ghost.gd" id="1_xe3x1"]
 [ext_resource type="Script" uid="uid://b3rwud8fo4tjj" path="res://ghost/sprite_selector.gd" id="2_sbw1e"]
@@ -9,9 +9,6 @@
 [ext_resource type="Script" uid="uid://duvdxeb1qukv" path="res://ghost/ghost_state/board.gd" id="6_salmi"]
 [ext_resource type="Script" uid="uid://x2ne3limjyh2" path="res://ghost/ghost_state/disembark.gd" id="7_flsxg"]
 [ext_resource type="Texture2D" uid="uid://b5j7f7f6bmpy7" path="res://ghost/assets/ghost_a/ghost_a_stand.png" id="9_lpkf8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iaaw"]
-size = Vector2(120, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iaaw"]
 radius = 100.0
@@ -53,9 +50,7 @@ _data = {
 &"float": SubResource("Animation_g6uso")
 }
 
-[node name="Ghost" type="RigidBody2D"]
-collision_layer = 0
-collision_mask = 2
+[node name="Ghost" type="Node2D"]
 script = ExtResource("1_xe3x1")
 
 [node name="GhostSpriteSelector" type="Node" parent="."]
@@ -81,9 +76,6 @@ script = ExtResource("7_flsxg")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_lpkf8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2iaaw")
-
 [node name="Destination" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -54.0
@@ -94,6 +86,7 @@ text = "Destination: 1"
 
 [node name="State" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -54.0
 offset_top = -183.0
 offset_right = 54.0
