@@ -51,6 +51,7 @@ color = Color(0.416658, 0.557162, 0.270715, 1)
 polygon = PackedVector2Array(2, 1102, 2, 703, 1925, 706, 1925, 1102)
 
 [node name="Track" type="Sprite2D" parent="ParallaxBackground/TrackAutoScroll"]
+texture_filter = 3
 position = Vector2(0, 669)
 texture = ExtResource("4_5jdw0")
 centered = false

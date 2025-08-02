@@ -38,7 +38,7 @@ func _add_train_car() -> void:
 	var index = train_cars.size()
 	var train_car:TrainCar = train_car_scene.instantiate()
 	train_cars_root.add_child(train_car)
-	train_car.position.x = -index * (train_car.sprite.texture.get_width() + TRAIN_CAR_GAP)
+	train_car.position.x = -index * (train_car.texture_size + TRAIN_CAR_GAP)
 	train_cars.append(train_car)
 
 

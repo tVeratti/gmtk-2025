@@ -145,6 +145,7 @@ unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
+texture_filter = 3
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_jo6ux")
 animation = &"idle"

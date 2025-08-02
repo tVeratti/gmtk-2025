@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://q5inrad673eu"]
+[gd_scene load_steps=10 format=3 uid="uid://q5inrad673eu"]
 
 [ext_resource type="Script" uid="uid://mwmjbw4h5atj" path="res://train/train_car/train_car.gd" id="1_epm51"]
-[ext_resource type="Texture2D" uid="uid://3fpvseargnjf" path="res://train/assets/car.png" id="2_1auyj"]
 [ext_resource type="Script" uid="uid://cvss8a1areo2m" path="res://train/train_car/train_car_passengers.gd" id="2_wg80q"]
+[ext_resource type="Texture2D" uid="uid://dxgwxrjk4y3k6" path="res://train/assets/train_car_main.png" id="3_db7h0"]
+[ext_resource type="Texture2D" uid="uid://b3u1tvhfbgi3g" path="res://train/assets/train_car_outer.png" id="4_p5f2p"]
 [ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="4_wg80q"]
+[ext_resource type="Texture2D" uid="uid://ccrfjun5imw8p" path="res://train/assets/train_car_balcony.png" id="5_p5f2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwggs"]
 size = Vector2(20, 448)
@@ -22,27 +24,58 @@ unique_name_in_owner = true
 script = ExtResource("2_wg80q")
 metadata/_custom_type_script = "uid://cvss8a1areo2m"
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="VisualRoot" type="CanvasGroup" parent="."]
+
+[node name="Main" type="Sprite2D" parent="VisualRoot"]
+unique_name_in_owner = true
 light_mask = 3
+texture_filter = 3
 position = Vector2(577, 362)
-texture = ExtResource("2_1auyj")
+texture = ExtResource("3_db7h0")
+
+[node name="Outer" type="Sprite2D" parent="VisualRoot"]
+unique_name_in_owner = true
+light_mask = 3
+z_index = 10
+z_as_relative = false
+texture_filter = 3
+position = Vector2(581, 362)
+texture = ExtResource("4_p5f2p")
+
+[node name="Outer2" type="Sprite2D" parent="VisualRoot"]
+unique_name_in_owner = true
+light_mask = 3
+z_index = 10
+z_as_relative = false
+texture_filter = 3
+position = Vector2(581, 362)
+texture = ExtResource("4_p5f2p")
+flip_h = true
+
+[node name="BalconyFloor" type="Sprite2D" parent="VisualRoot"]
+light_mask = 3
+texture_filter = 3
+position = Vector2(1171, 556)
+texture = ExtResource("5_p5f2p")
+
+[node name="BalconyFloor2" type="Sprite2D" parent="VisualRoot"]
+light_mask = 3
+texture_filter = 3
+position = Vector2(-9, 556)
+texture = ExtResource("5_p5f2p")
+flip_h = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
 [node name="WallLeft" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-33, 363)
-shape = SubResource("RectangleShape2D_fwggs")
-disabled = true
-
-[node name="WallRight" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1191, 363)
+position = Vector2(45, 363)
 shape = SubResource("RectangleShape2D_fwggs")
 disabled = true
 
 [node name="Floor" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575, 594)
+position = Vector2(575, 579)
 rotation = 1.5708
 scale = Vector2(1, 1.16)
 shape = SubResource("RectangleShape2D_apqtr")
@@ -63,18 +96,19 @@ label_settings = ExtResource("4_wg80q")
 
 [node name="Seats" type="Node2D" parent="."]
 
-[node name="Seat" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(118, 524)
+[node name="Seat" type="Marker2D" parent="Seats" groups=["flip_seat", "seat"]]
+position = Vector2(230, 490)
 
 [node name="Seat2" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(418, 520)
+position = Vector2(429, 490)
 
-[node name="Seat3" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(713, 520)
+[node name="Seat3" type="Marker2D" parent="Seats" groups=["flip_seat", "seat"]]
+position = Vector2(716, 494)
 
 [node name="Seat4" type="Marker2D" parent="Seats" groups=["seat"]]
-position = Vector2(975, 521)
+position = Vector2(914, 490)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_1auyj")
 occluder_light_mask = 3

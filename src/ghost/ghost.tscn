@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://d2gves22gghef" path="res://ghost/assets/ghost_glow.png" id="9_g6uso"]
 [ext_resource type="Texture2D" uid="uid://b5j7f7f6bmpy7" path="res://ghost/assets/ghost_a/ghost_a_stand.png" id="9_lpkf8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2iaaw"]
-radius = 100.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6uso"]
+radius = 50.0
+height = 250.0
 
 [sub_resource type="Animation" id="Animation_salmi"]
 length = 0.001
@@ -100,11 +101,12 @@ unique_name_in_owner = true
 position = Vector2(0, -75)
 
 [node name="InteractArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(3, -82)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-shape = SubResource("CircleShape2D_2iaaw")
+position = Vector2(5, -1)
+shape = SubResource("CapsuleShape2D_g6uso")
 
 [node name="VisualRoot" type="CanvasGroup" parent="."]
 position = Vector2(0, -81)
@@ -114,14 +116,14 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(3, 11)
 color = Color(0.455082, 0.725486, 1, 1)
-energy = 0.3
+energy = 1.64
 range_item_cull_mask = 2
 texture = ExtResource("9_g6uso")
 texture_scale = 1.2
 
 [node name="Sprite2D" type="Sprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.407843)
+texture_filter = 3
 texture = ExtResource("9_lpkf8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VisualRoot"]
