@@ -102,7 +102,7 @@ shape = SubResource("CircleShape2D_2iaaw")
 
 [node name="GhostTicket" parent="." instance=ExtResource("3_tqhd8")]
 unique_name_in_owner = true
-position = Vector2(0, -42)
+position = Vector2(0, -75)
 
 [node name="VisualRoot" type="CanvasGroup" parent="."]
 position = Vector2(0, -81)

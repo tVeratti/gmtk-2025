@@ -19,6 +19,7 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 			return car.passengers.has_capacity())
 	
 	if cars_with_capacity.is_empty():
+		train_passengers_boarded.emit()
 		return
 	
 	var new_ghosts: = Array()
