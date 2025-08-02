@@ -5,6 +5,7 @@ extends Node2D
 signal train_cars_ready
 signal passengers_boarded
 signal passengers_disembarked
+signal status_changed(info:String)
 
 
 const TRAIN_CAR_GAP:float = 30.0

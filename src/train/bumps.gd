@@ -7,7 +7,7 @@ const BUMP_MAX_TIMER:float = 1.3
 const BUMP_DELAY:float = 0.3
 
 const BUMP_AMOUNT_MIN:float = 1.0
-const BUMP_AMOUNT_MAX:float = 2.0
+const BUMP_AMOUNT_MAX:float = 4.0
 const BUMP_LARGE_THRESHOLD:float = 0.8
 
 

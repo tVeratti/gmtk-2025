@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://clh2mlvglkjke"]
+
+[ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="1_4hrks"]
+
+[resource]
+font = ExtResource("1_4hrks")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 0.313726)

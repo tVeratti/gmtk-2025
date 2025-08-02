@@ -131,6 +131,7 @@ script = ExtResource("3_gtsfv")
 
 [node name="State" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -23.0
 offset_top = -209.0
 offset_right = 17.0

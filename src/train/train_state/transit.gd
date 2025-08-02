@@ -16,7 +16,7 @@ func enter(data := {}) -> void:
 	var next_station_index = _get_next_index(previous_station_index)
 	
 	next_station = MapManager.stations[next_station_index]
-	train.info.text = "Transit to Station %s" % next_station.station_name
+	train.status_changed.emit("Transit to Station %s" % next_station.station_name)
 	train.fmod_tracks["fmod_parameters/train_motion"] = "Start"
 	
 	var next_position = _get_next_position(next_station)
