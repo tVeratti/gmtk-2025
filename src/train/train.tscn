@@ -52,5 +52,17 @@ offset_top = 66.0
 offset_right = 394.0
 offset_bottom = 89.0
 
+[node name="Fmod-Tracks" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Ambience/Tracks"
+event_guid = "{50ca7922-3f9d-421e-8b6e-7155d1c9b0ee}"
+attached = false
+autoplay = true
+volume = 0.5
+fmod_parameters/train_motion/id = -8356684585543476017
+fmod_parameters/train_motion = "Idle"
+fmod_parameters/train_motion/labels = PackedStringArray("Idle", "Start", "Stop", "Go")
+fmod_parameters/train_motion/variant_type = 4
+unique_name_in_owner = true
+
 [connection signal="train_passengers_boarded" from="Passengers" to="." method="_on_passengers_train_passengers_boarded"]
 [connection signal="train_passengers_disembarked" from="Passengers" to="." method="_on_passengers_train_passengers_disembarked"]

@@ -17,6 +17,7 @@ func enter(data := {}) -> void:
 	
 	next_station = MapManager.stations[next_station_index]
 	train.info.text = "Transit to Station %s" % next_station.station_name
+	train.fmod_tracks["fmod_parameters/train_motion"] = "Start"
 	
 	var next_position = _get_next_position(next_station)
 	# Tween to 90% of the next station, then transition to stopping/braking

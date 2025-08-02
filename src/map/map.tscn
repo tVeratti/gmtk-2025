@@ -86,11 +86,4 @@ event_guid = "{bc46891e-df15-42c5-8a25-58259af6dcd9}"
 autoplay = true
 volume = 0.5
 
-[node name="Fmod-Tracks" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/SFX/Ambience/Tracks"
-event_guid = "{1f021db6-b9e0-43a8-9a88-ab855964790f}"
-attached = false
-autoplay = true
-volume = 0.5
-
 [connection signal="train_cars_ready" from="Train" to="." method="_on_train_cars_ready"]

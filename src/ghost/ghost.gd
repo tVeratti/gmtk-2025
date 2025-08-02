@@ -47,7 +47,7 @@ func _ready() -> void:
 	destination_label.text = "Destination: %s" % stop_station_index
 
 
-func _process(delta):
+func _process(_delta):
 	state.text = state_machine.state.name
 
 

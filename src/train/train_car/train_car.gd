@@ -38,7 +38,7 @@ func _on_passengers_disembarked(ghosts) -> void:
 	_update_capacity_label()
 
 
-func _on_passengers_boarded(ghosts) -> void:
+func _on_passengers_boarded(_ghosts) -> void:
 	_update_capacity_label()
 
 

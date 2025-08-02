@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://yysv0g68tg2x"]
+[gd_scene load_steps=22 format=3 uid="uid://yysv0g68tg2x"]
 
 [ext_resource type="Script" uid="uid://c7o1ov0f1f5wy" path="res://components/state_machine/state_machine.gd" id="1_8eijk"]
 [ext_resource type="Script" uid="uid://bmu3t5l6qg4vt" path="res://player/player.gd" id="1_g20gq"]
@@ -6,16 +6,24 @@
 [ext_resource type="Script" uid="uid://cbp8tfldtdhut" path="res://player/player_state/idle.gd" id="2_gtsfv"]
 [ext_resource type="Script" uid="uid://cqcp87mt4kpkr" path="res://player/player_input.gd" id="2_rgyib"]
 [ext_resource type="Script" uid="uid://b1yrpp1rep1l7" path="res://player/player_state/move.gd" id="3_gtsfv"]
-[ext_resource type="Texture2D" uid="uid://d0au448wot7bu" path="res://player/assets/IMG_1230.png" id="6_eu8pa"]
 [ext_resource type="Texture2D" uid="uid://8h8u4t3s87k1" path="res://player/assets/conductor.png" id="7_noxpy"]
+[ext_resource type="Texture2D" uid="uid://cpfrelkdicr1u" path="res://player/assets/idle anim.png" id="7_rgyib"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eu8pa"]
 radius = 50.0
 height = 320.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jo6ux"]
-atlas = ExtResource("6_eu8pa")
-region = Rect2(600, 300, 540, 480)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("7_rgyib")
+region = Rect2(0, 0, 273, 454)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("7_rgyib")
+region = Rect2(273, 0, 273, 454)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("7_rgyib")
+region = Rect2(0, 454, 273, 454)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cf6c"]
 atlas = ExtResource("7_noxpy")
@@ -53,7 +61,13 @@ region = Rect2(528, 904, 528, 452)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jo6ux")
+"texture": SubResource("AtlasTexture_hg6s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
 }],
 "loop": true,
 "name": &"idle",
@@ -130,10 +144,9 @@ unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
-position = Vector2(0, -20)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_jo6ux")
-animation = &"walk"
+animation = &"idle"
 autoplay = "walk"
-frame_progress = 0.0139252
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]

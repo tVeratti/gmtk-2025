@@ -18,6 +18,8 @@ const TRAIN_SPEED_MAX:float = 0.01
 @onready var train_cars_root:Node2D = %TrainCars
 @onready var passengers:TrainPassengers = %Passengers
 
+@onready var fmod_tracks:FmodEventEmitter2D = %"Fmod-Tracks"
+
 @onready var info:Label = %Info
 
 
