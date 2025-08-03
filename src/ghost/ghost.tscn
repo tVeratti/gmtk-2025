@@ -112,11 +112,9 @@ shape = SubResource("CapsuleShape2D_g6uso")
 position = Vector2(0, -81)
 
 [node name="PointLight2D" type="PointLight2D" parent="VisualRoot"]
-light_mask = 2
-visibility_layer = 2
 position = Vector2(3, 11)
 color = Color(0.3095, 0.661461, 0.999999, 1)
-energy = 0.8
+energy = 0.6
 range_item_cull_mask = 3
 texture = ExtResource("9_g6uso")
 texture_scale = 2.24

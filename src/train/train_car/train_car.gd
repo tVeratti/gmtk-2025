@@ -7,6 +7,7 @@ extends Node2D
 @export var comfort:int = 1
 
 
+var train:Train
 var open_seats:Array = []
 
 
@@ -47,3 +48,11 @@ func _on_passengers_boarded(_ghosts) -> void:
 
 func _update_capacity_label() -> void:
 	capacity_label.text = "Capacity %s/%s" % [passengers.ghosts.size(), capacity]
+
+
+func _on_inside_area_body_entered(body):
+	train.train_car_entered.emit()
+
+
+func _on_inside_area_body_exited(body):
+	train.train_car_exited.emit()
