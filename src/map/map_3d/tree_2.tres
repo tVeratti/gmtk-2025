@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cd4jkwdlg0wy0"]
+
+[ext_resource type="Texture2D" uid="uid://bmr1e3asp8csh" path="res://map/map_3d/tree.png" id="1_lrnn3"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_lrnn3")
+uv1_scale = Vector3(0.94, 0.94, 0.94)
+uv1_offset = Vector3(-1.02, 0.03, 0)
+billboard_mode = 2
