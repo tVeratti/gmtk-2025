@@ -59,6 +59,10 @@ centered = false
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="UI" node_paths=PackedStringArray("map_3d", "train") instance=ExtResource("8_kxmgb")]
+offset_left = -29.0
+offset_top = 2.0
+offset_right = -29.0
+offset_bottom = 2.0
 map_3d = NodePath("../../SubViewport/Map3D")
 train = NodePath("../../Train")
 
@@ -86,9 +90,13 @@ event_name = "event:/SFX/Ambience/Wind"
 event_guid = "{bc46891e-df15-42c5-8a25-58259af6dcd9}"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-rotation = 6.05046
-color = Color(1, 1, 0.647059, 1)
-energy = 0.1
+rotation = -0.141372
+energy = 0.7
 shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 3
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.568972, 0.568973, 0.568972, 1)
 
 [connection signal="train_cars_ready" from="Train" to="." method="_on_train_cars_ready"]

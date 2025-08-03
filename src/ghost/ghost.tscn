@@ -115,11 +115,11 @@ position = Vector2(0, -81)
 light_mask = 2
 visibility_layer = 2
 position = Vector2(3, 11)
-color = Color(0.455082, 0.725486, 1, 1)
-energy = 1.64
-range_item_cull_mask = 2
+color = Color(0.3095, 0.661461, 0.999999, 1)
+energy = 0.8
+range_item_cull_mask = 3
 texture = ExtResource("9_g6uso")
-texture_scale = 1.2
+texture_scale = 2.24
 
 [node name="Sprite2D" type="Sprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
@@ -127,6 +127,7 @@ texture_filter = 3
 texture = ExtResource("9_lpkf8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VisualRoot"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_flsxg")
