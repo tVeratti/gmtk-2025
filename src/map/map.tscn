@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdh3xivp4ihfw"]
+[gd_scene load_steps=13 format=3 uid="uid://cdh3xivp4ihfw"]
 
 [ext_resource type="Script" uid="uid://cyqfvhl72mt3g" path="res://map/map.gd" id="1_5jdw0"]
 [ext_resource type="PackedScene" uid="uid://gkp7hgfjxvu0" path="res://map/map_3d/map_3d.tscn" id="1_cn70m"]
 [ext_resource type="Script" uid="uid://clchosgdufaln" path="res://map/parallax_auto_scroller.gd" id="2_dje7r"]
 [ext_resource type="Texture2D" uid="uid://bm00aissmtove" path="res://map/assets/track.png" id="4_5jdw0"]
+[ext_resource type="Texture2D" uid="uid://dc2wwy2rk3w2d" path="res://map/assets/IMG_1345.png" id="4_i5grx"]
 [ext_resource type="PackedScene" uid="uid://cwno3upmbut3a" path="res://train/train.tscn" id="4_lvomx"]
+[ext_resource type="Texture2D" uid="uid://cuokmresjmv7s" path="res://map/assets/IMG_1343.png" id="5_e8e5r"]
 [ext_resource type="PackedScene" uid="uid://yysv0g68tg2x" path="res://player/player.tscn" id="5_tjure"]
+[ext_resource type="Texture2D" uid="uid://ntcb0ecacf77" path="res://map/assets/IMG_1344.png" id="6_112ik"]
 [ext_resource type="Script" uid="uid://w4p426bbuk2l" path="res://components/main_camera.gd" id="6_xnt8k"]
 [ext_resource type="PackedScene" uid="uid://qvsvkhevbgy6" path="res://map/hud/hud.tscn" id="8_kxmgb"]
 
@@ -38,6 +41,19 @@ texture = SubResource("ViewportTexture_5oqum")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
+[node name="ForegroundGrass3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_dje7r")
+speed = -700.0
+
+[node name="Grass" type="Sprite2D" parent="ParallaxBackground/ForegroundGrass3"]
+texture_filter = 3
+position = Vector2(-499, 242)
+texture = ExtResource("4_i5grx")
+centered = false
+
 [node name="TrackAutoScroll" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(-8, -23)
 motion_scale = Vector2(0, 0)
@@ -46,15 +62,49 @@ script = ExtResource("2_dje7r")
 speed = -800.0
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/TrackAutoScroll"]
-visible = false
-position = Vector2(0, 94)
-color = Color(0.416658, 0.557162, 0.270715, 1)
+position = Vector2(0, 143)
+color = Color(0.556863, 0.580392, 0.384314, 1)
 polygon = PackedVector2Array(2, 1102, 2, 703, 1925, 706, 1925, 1102)
 
 [node name="Track" type="Sprite2D" parent="ParallaxBackground/TrackAutoScroll"]
 texture_filter = 3
 position = Vector2(0, 669)
 texture = ExtResource("4_5jdw0")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ForegroundGrass2" type="ParallaxLayer" parent="ParallaxForeground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_dje7r")
+speed = -900.0
+
+[node name="Grass" type="Sprite2D" parent="ParallaxForeground/ForegroundGrass2"]
+modulate = Color(0.650128, 0.650128, 0.650128, 1)
+z_index = 20
+z_as_relative = false
+texture_filter = 3
+position = Vector2(105, 500)
+texture = ExtResource("6_112ik")
+centered = false
+
+[node name="ForegroundGrass" type="ParallaxLayer" parent="ParallaxForeground"]
+position = Vector2(-8, -23)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_dje7r")
+speed = -1000.0
+
+[node name="Grass" type="Sprite2D" parent="ParallaxForeground/ForegroundGrass"]
+modulate = Color(0.241156, 0.241156, 0.241156, 1)
+z_index = 20
+z_as_relative = false
+texture_filter = 3
+position = Vector2(-441, 571)
+texture = ExtResource("5_e8e5r")
 centered = false
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -93,12 +143,12 @@ event_guid = "{bc46891e-df15-42c5-8a25-58259af6dcd9}"
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 rotation = -0.352556
 color = Color(0.990031, 0.781646, 0.807168, 1)
-energy = 0.5
+energy = 0.2
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_item_cull_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.568972, 0.568973, 0.568972, 1)
+color = Color(0.775063, 0.775064, 0.775063, 1)
 
 [connection signal="train_cars_ready" from="Train" to="." method="_on_train_cars_ready"]

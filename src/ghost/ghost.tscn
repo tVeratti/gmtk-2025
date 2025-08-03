@@ -112,6 +112,7 @@ shape = SubResource("CapsuleShape2D_g6uso")
 position = Vector2(0, -81)
 
 [node name="PointLight2D" type="PointLight2D" parent="VisualRoot"]
+visible = false
 position = Vector2(3, 11)
 color = Color(0.3095, 0.661461, 0.999999, 1)
 energy = 0.6

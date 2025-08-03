@@ -131,7 +131,7 @@ light_energy = 0.5
 unique_name_in_owner = true
 
 [node name="PathFollow3D" parent="Track/Path3D" index="0"]
-transform = Transform3D(-0.0945278, 0.00200908, -0.995429, 8.82522e-05, 0.999955, 0.00200964, 0.995437, 0.000102132, -0.0945272, 16.8844, 1.00356, -127.04)
+transform = Transform3D(-0.0945278, 0.00200908, -0.995429, 8.82521e-05, 0.999955, 0.00200964, 0.995437, 0.000102132, -0.0945272, 16.8844, 1.00356, -127.04)
 progress = 17.6539
 
 [node name="Camera3D" parent="Track/Path3D/PathFollow3D/Sprite3D" index="0"]
@@ -212,11 +212,13 @@ transform = Transform3D(-0.0072961, -3.98372e-05, -0.999929, 0.000174616, 0.9999
 
 [node name="Windmill" type="Sprite3D" parent="Environment"]
 transform = Transform3D(0.25819, 0.000344623, 1.79149, 0.000197322, 1.81, -0.000376621, -1.79149, 0.000249028, 0.25819, 240.858, 17.3134, 14.9988)
+extra_cull_margin = 100.0
 billboard = 2
 texture = ExtResource("11_21w1s")
 
 [node name="Blades" type="Sprite3D" parent="Environment/Windmill"]
 transform = Transform3D(0.183763, 0.507407, -0.118365, 0.519461, -0.188152, -0.000100469, -0.0404021, -0.111256, -0.539657, 0.694723, 0.777678, 0.394024)
+extra_cull_margin = 100.0
 texture = ExtResource("12_gtc71")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Environment/Windmill/Blades"]
@@ -245,43 +247,43 @@ texture = ExtResource("14_tb6jv")
 [node name="Clouds" type="Node3D" parent="Environment"]
 
 [node name="Sprite3D9" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(3.57027, -1.16415e-10, -4.84288e-08, 2.91038e-10, 3.57027, -1.07775e-10, 2.23517e-08, 1.9827e-10, 3.57027, 158.13, 78.5248, -6.25313)
+transform = Transform3D(3.57027, -2.91038e-10, -2.23517e-08, 2.91038e-10, 3.57027, -2.12367e-10, 2.23517e-08, 2.12367e-10, 3.57027, 157.611, 78.5219, -77.3609)
 pixel_size = 0.05
 billboard = 2
 texture = ExtResource("16_0jovs")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(2.19709, 4.94765e-10, 0, 2.03727e-10, 2.19709, 3.66072e-11, 2.23517e-08, -4.09273e-12, 2.19709, 147.498, 47.4158, -29.5406)
+transform = Transform3D(2.19709, -2.32831e-10, -2.79397e-08, 2.32831e-10, 2.19709, 1.22782e-11, 2.79397e-08, -1.22782e-11, 2.19709, 148.223, 64.3363, 69.3787)
 pixel_size = 0.04
 billboard = 2
 texture = ExtResource("15_tb6jv")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(2.19709, 3.7835e-10, 0, 1.45519e-10, 2.19709, 2.16005e-11, 1.49012e-08, 3.86535e-12, 2.19709, 104.778, 84.6387, 14.703)
+transform = Transform3D(2.19709, -1.74623e-10, -1.67638e-08, 1.74623e-10, 2.19709, -3.41061e-12, 1.67638e-08, 3.4106e-12, 2.19709, 105.977, 84.6453, 178.996)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("15_tb6jv")
 
 [node name="Sprite3D6" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(2.19709, 3.7835e-10, -3.72529e-09, 1.45519e-10, 2.19709, 5.8435e-11, 2.04891e-08, 3.86535e-12, 2.19709, 104.892, 71.013, -22.8894)
+transform = Transform3D(2.19709, -1.74623e-10, -2.23518e-08, 1.74623e-10, 2.19709, -3.4106e-12, 2.23517e-08, 3.4106e-12, 2.19709, 103.892, 71.0075, -159.944)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("15_tb6jv")
 
 [node name="Sprite3D7" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(2.19709, 4.36557e-10, 1.86265e-09, 1.74623e-10, 2.19709, -2.27374e-13, 1.67638e-08, 3.41061e-12, 2.19709, 147.875, 50.0643, 23.5248)
+transform = Transform3D(2.19709, -2.03727e-10, -1.86265e-08, 2.03727e-10, 2.19709, 4.09273e-12, 1.86265e-08, -4.09273e-12, 2.19709, 148.532, 50.0679, 113.556)
 pixel_size = 0.02
 billboard = 2
 texture = ExtResource("16_0jovs")
 
 [node name="Sprite3D8" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(3.57027, 2.91038e-10, -2.98023e-08, 0, 3.57027, -1.2551e-10, 1.11759e-08, 6.41194e-11, 3.57027, 138.105, 131.315, 10.635)
+transform = Transform3D(3.57027, -1.97863e-19, -1.11759e-08, 0, 3.57027, -6.32099e-11, 1.11759e-08, 6.32099e-11, 3.57027, 138.099, 131.315, 9.77483)
 pixel_size = 0.1
 billboard = 2
 texture = ExtResource("16_0jovs")
 
 [node name="Sprite3D10" type="Sprite3D" parent="Environment/Clouds"]
-transform = Transform3D(2.19709, 3.20142e-10, 0, 1.16415e-10, 2.19709, 2.84217e-11, 1.30385e-08, 4.3201e-12, 2.19709, 93.5473, 69.9777, 18.1882)
+transform = Transform3D(2.19709, -1.45519e-10, -1.49012e-08, 1.45519e-10, 2.19709, -3.86535e-12, 1.49012e-08, 3.86535e-12, 2.19709, 94.5306, 69.9831, 152.949)
 pixel_size = 0.03
 billboard = 2
 texture = ExtResource("17_ynqkn")

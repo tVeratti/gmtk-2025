@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://reaxmh4iatxs"]
+[gd_scene load_steps=3 format=3 uid="uid://reaxmh4iatxs"]
 
 [ext_resource type="PackedScene" uid="uid://cdh3xivp4ihfw" path="res://map/map.tscn" id="1_ig7tw"]
+[ext_resource type="AudioStream" uid="uid://co43id0gk54sc" path="res://assets/song2.mp3" id="2_0xm2m"]
 
 [node name="Main" type="Node2D"]
 
@@ -8,3 +9,7 @@
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod/Banks/Desktop/Master.bank", "res://fmod/Banks/Desktop/Master.strings.bank", "res://fmod/Banks/Desktop/Ambience.bank"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0xm2m")
+autoplay = true
