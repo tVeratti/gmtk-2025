@@ -14,6 +14,7 @@ script = ExtResource("1_opmfl")
 
 [node name="VisualRoot" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
+light_mask = 0
 
 [node name="Ticket" type="Sprite2D" parent="VisualRoot"]
 unique_name_in_owner = true

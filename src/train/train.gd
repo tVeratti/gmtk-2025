@@ -7,6 +7,9 @@ signal passengers_boarded
 signal passengers_disembarked
 signal status_changed(info:String)
 
+signal train_car_entered
+signal train_car_exited
+
 
 const TRAIN_CAR_GAP:float = 30.0
 const TRAIN_SPEED_MAX:float = 0.01

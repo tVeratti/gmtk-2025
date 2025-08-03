@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3u1tvhfbgi3g" path="res://train/assets/train_car_outer.png" id="4_p5f2p"]
 [ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="4_wg80q"]
 [ext_resource type="Texture2D" uid="uid://ccrfjun5imw8p" path="res://train/assets/train_car_balcony.png" id="5_p5f2p"]
-[ext_resource type="Texture2D" uid="uid://d2gves22gghef" path="res://ghost/assets/ghost_glow.png" id="6_43agg"]
+[ext_resource type="Texture2D" uid="uid://ydjy8agj18jw" path="res://train/assets/train_car_lighting.png" id="6_43agg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwggs"]
 size = Vector2(20, 448)
@@ -68,30 +68,11 @@ texture = ExtResource("5_p5f2p")
 flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="VisualRoot"]
-position = Vector2(582, 225)
+position = Vector2(585, 370)
 color = Color(0.954855, 0.798014, 0.589491, 1)
-energy = 0.8
+energy = 0.4
 range_item_cull_mask = 2
 texture = ExtResource("6_43agg")
-texture_scale = 5.57
-
-[node name="PointLight2D2" type="PointLight2D" parent="VisualRoot"]
-visible = false
-position = Vector2(595, 301)
-color = Color(0.954855, 0.798014, 0.589491, 1)
-energy = 0.8
-range_item_cull_mask = 2
-texture = ExtResource("6_43agg")
-texture_scale = 3.0
-
-[node name="PointLight2D3" type="PointLight2D" parent="VisualRoot"]
-visible = false
-position = Vector2(847, 301)
-color = Color(0.954855, 0.798014, 0.589491, 1)
-energy = 0.8
-range_item_cull_mask = 2
-texture = ExtResource("6_43agg")
-texture_scale = 3.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -115,6 +96,7 @@ shape = SubResource("RectangleShape2D_apqtr")
 
 [node name="Capacity" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -40.0
 offset_top = 91.0
 offset_right = 55.0

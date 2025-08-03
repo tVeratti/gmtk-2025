@@ -72,5 +72,13 @@ fmod_parameters/train_motion/labels = PackedStringArray("Idle", "Start", "Stop",
 fmod_parameters/train_motion/variant_type = 4
 unique_name_in_owner = true
 
+[node name="Fmod-InsideSnapshot" type="FmodEventEmitter2D" parent="."]
+event_name = "snapshot:/InsideSNPSHT"
+event_guid = "{ee9a7f8b-65cd-43b5-ba96-76447b35ce7d}"
+fmod_parameters/inside/id = 1144336886328575639
+fmod_parameters/inside = 0.0
+fmod_parameters/inside/variant_type = 3
+unique_name_in_owner = true
+
 [connection signal="train_passengers_boarded" from="Passengers" to="." method="_on_passengers_train_passengers_boarded"]
 [connection signal="train_passengers_disembarked" from="Passengers" to="." method="_on_passengers_train_passengers_disembarked"]
