@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4kimviqnb1al"]
+[gd_scene load_steps=4 format=3 uid="uid://b4kimviqnb1al"]
 
 [ext_resource type="Texture2D" uid="uid://c7ptjhywbloan" path="res://train/assets/caboose.png" id="1_1aej1"]
+[ext_resource type="PackedScene" uid="uid://c1cykhrnii124" path="res://train/wheels.tscn" id="2_7hwiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hwiv"]
 size = Vector2(496, 20)
@@ -22,3 +23,6 @@ shape = SubResource("RectangleShape2D_7hwiv")
 position = Vector2(-164, -6)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_7hwiv")
+
+[node name="Wheels" parent="." instance=ExtResource("2_7hwiv")]
+position = Vector2(-577, -233)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://q5inrad673eu"]
+[gd_scene load_steps=13 format=3 uid="uid://q5inrad673eu"]
 
 [ext_resource type="Script" uid="uid://mwmjbw4h5atj" path="res://train/train_car/train_car.gd" id="1_epm51"]
 [ext_resource type="Script" uid="uid://cvss8a1areo2m" path="res://train/train_car/train_car_passengers.gd" id="2_wg80q"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="4_wg80q"]
 [ext_resource type="Texture2D" uid="uid://ccrfjun5imw8p" path="res://train/assets/train_car_balcony.png" id="5_p5f2p"]
 [ext_resource type="Texture2D" uid="uid://ydjy8agj18jw" path="res://train/assets/train_car_lighting.png" id="6_43agg"]
+[ext_resource type="PackedScene" uid="uid://c1cykhrnii124" path="res://train/wheels.tscn" id="8_8tob2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwggs"]
 size = Vector2(20, 448)
@@ -18,10 +19,13 @@ size = Vector2(20, 1231)
 polygon = PackedVector2Array(17, 168, 1141, 171, 1136, 180, 25, 178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43agg"]
-size = Vector2(1060, 100)
+size = Vector2(1049, 100)
 
 [node name="TrainCar" type="Node2D"]
 script = ExtResource("1_epm51")
+texture_size = null
+capacity = null
+comfort = null
 
 [node name="Passengers" type="Node" parent="."]
 unique_name_in_owner = true
@@ -82,7 +86,8 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="WallLeft" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(45, 363)
+unique_name_in_owner = true
+position = Vector2(-77, 363)
 shape = SubResource("RectangleShape2D_fwggs")
 disabled = true
 
@@ -130,7 +135,19 @@ position = Vector2(583, 520)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideArea"]
+position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_43agg")
+
+[node name="Wheels" parent="." instance=ExtResource("8_8tob2")]
+position = Vector2(90, 148)
+
+[node name="Wheels2" parent="." instance=ExtResource("8_8tob2")]
+position = Vector2(512, 148)
+
+[node name="Wheel1" parent="Wheels2" index="1"]
+visible = false
 
 [connection signal="body_entered" from="InsideArea" to="." method="_on_inside_area_body_entered"]
 [connection signal="body_exited" from="InsideArea" to="." method="_on_inside_area_body_exited"]
+
+[editable path="Wheels2"]

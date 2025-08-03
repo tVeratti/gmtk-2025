@@ -15,6 +15,7 @@ var open_seats:Array = []
 @onready var sprite:Sprite2D = %Main
 @onready var capacity_label:Label = %Capacity
 @onready var seats_root:Node2D = $Seats
+@onready var wall_left:CollisionShape2D = %WallLeft
 
 
 func _ready() -> void:
@@ -24,6 +25,10 @@ func _ready() -> void:
 	passengers.disembarked.connect(_on_passengers_disembarked)
 	
 	_update_capacity_label()
+
+
+func set_is_last(value:bool) -> void:
+	wall_left.disabled = !value
 
 
 func add_ghosts_to_seats(ghosts:Array) -> void:

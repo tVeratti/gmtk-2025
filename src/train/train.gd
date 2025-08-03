@@ -44,12 +44,17 @@ func _ready() -> void:
 
 
 func _add_train_car() -> void:
+	if train_cars_root.get_child_count() > 0:
+		train_cars_root.get_child(-1).set_is_last(false)
+	
 	var index = train_cars.size()
 	var train_car:TrainCar = train_car_scene.instantiate()
 	train_car.train = self
 	train_cars_root.add_child(train_car)
 	train_car.position.x = -index * (train_car.texture_size + TRAIN_CAR_GAP)
 	train_cars.append(train_car)
+	
+	train_car.set_is_last(true)
 
 
 func _on_passengers_train_passengers_boarded():
