@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://q5inrad673eu"]
+[gd_scene load_steps=12 format=3 uid="uid://q5inrad673eu"]
 
 [ext_resource type="Script" uid="uid://mwmjbw4h5atj" path="res://train/train_car/train_car.gd" id="1_epm51"]
 [ext_resource type="Script" uid="uid://cvss8a1areo2m" path="res://train/train_car/train_car_passengers.gd" id="2_wg80q"]
@@ -16,6 +16,9 @@ size = Vector2(20, 1231)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1auyj"]
 polygon = PackedVector2Array(17, 168, 1141, 171, 1136, 180, 25, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43agg"]
+size = Vector2(1060, 100)
 
 [node name="TrainCar" type="Node2D"]
 script = ExtResource("1_epm51")
@@ -121,3 +124,13 @@ position = Vector2(914, 490)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_1auyj")
 occluder_light_mask = 3
+
+[node name="InsideArea" type="Area2D" parent="."]
+position = Vector2(583, 520)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InsideArea"]
+shape = SubResource("RectangleShape2D_43agg")
+
+[connection signal="body_entered" from="InsideArea" to="." method="_on_inside_area_body_entered"]
+[connection signal="body_exited" from="InsideArea" to="." method="_on_inside_area_body_exited"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xalnj75he8jm" path="res://map/map_3d/map_3d.gd" id="1_llq3w"]
 [ext_resource type="PackedScene" uid="uid://cp8h1hwg52x31" path="res://map/map_3d/track/track.tscn" id="2_a0dt8"]
-[ext_resource type="Texture2D" uid="uid://boou0v3qtltew" path="res://map/assets/skybox.png" id="2_a0762"]
+[ext_resource type="Texture2D" uid="uid://bnukdcl2r44sr" path="res://map/assets/skybox_2.png" id="2_xmmx8"]
 [ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="4_lgq1i"]
 [ext_resource type="PackedScene" uid="uid://dxo6yewgi4twv" path="res://map/station/station.tscn" id="5_a0762"]
 [ext_resource type="Texture2D" uid="uid://biucqcgefvrjx" path="res://map/assets/station.png" id="6_otttk"]
@@ -10,7 +10,7 @@
 [ext_resource type="Material" uid="uid://dfwpnw7rf7mhu" path="res://map/map_3d/bush_material.tres" id="8_xmmx8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lgq1i"]
-panorama = ExtResource("2_a0762")
+panorama = ExtResource("2_xmmx8")
 
 [sub_resource type="Sky" id="Sky_4hjbm"]
 sky_material = SubResource("PanoramaSkyMaterial_lgq1i")
@@ -65,7 +65,7 @@ light_energy = 0.5
 unique_name_in_owner = true
 
 [node name="PathFollow3D" parent="Track/Path3D" index="0"]
-transform = Transform3D(-0.0272177, 0.00044993, -0.999587, 4.02482e-06, 0.999994, 0.00044997, 0.999584, 8.22469e-06, -0.0272178, 3.19925, 1.02044, -127.865)
+transform = Transform3D(-0.0272177, 0.00044993, -0.999586, 4.02482e-06, 0.999994, 0.00044997, 0.999584, 8.22469e-06, -0.0272178, 3.19925, 1.02044, -127.865)
 progress = 3.94134
 
 [node name="Ground" type="MeshInstance3D" parent="."]

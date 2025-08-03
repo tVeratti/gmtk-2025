@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cftgf0k2vg1lw"]
+[gd_scene load_steps=6 format=3 uid="uid://cftgf0k2vg1lw"]
 
 [ext_resource type="Script" uid="uid://ccq17g0e2p25n" path="res://ghost/ghost_ticket/ghost_ticket.gd" id="1_opmfl"]
 [ext_resource type="Shader" uid="uid://ch7unyxmh1lgg" path="res://assets/shaders/color.gdshader" id="2_a5wvx"]
 [ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_qgegy"]
+[ext_resource type="Texture2D" uid="uid://c3y21l7i04tjv" path="res://ghost/assets/ticket.png" id="3_qrp0t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qrp0t"]
 shader = ExtResource("2_a5wvx")
@@ -20,7 +21,7 @@ light_mask = 0
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_qrp0t")
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qgegy")
+texture = ExtResource("3_qrp0t")
 
 [node name="Stamp" type="Sprite2D" parent="VisualRoot"]
 unique_name_in_owner = true
