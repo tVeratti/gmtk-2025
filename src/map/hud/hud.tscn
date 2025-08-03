@@ -58,3 +58,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Karma: 0"
 label_settings = ExtResource("4_m0opj")
+
+[node name="KarmaTarget" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Goal: 20"
+label_settings = ExtResource("4_m0opj")

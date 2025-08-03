@@ -14,6 +14,7 @@ var station_label_scene = load("uid://df0ehva33767t")
 
 @onready var info:Label = %Info
 @onready var karma:Label = %Karma
+@onready var karma_target:Label = %KarmaTarget
 
 
 func _ready() -> void:
@@ -30,7 +31,9 @@ func _ready() -> void:
 	
 	train.status_changed.connect(_on_train_status_changed)
 	
+	_on_karma_changed(0)
 	KarmaManager.karma_gained.connect(_on_karma_changed)
+	KarmaManager.karma_target_changed.connect(_on_karma_changed)
 
 
 func _process(_delta):
@@ -70,5 +73,6 @@ func _on_train_status_changed(status:String) -> void:
 	info.text = status
 
 
-func _on_karma_changed(_vluae) -> void:
+func _on_karma_changed(_v) -> void:
 	karma.text = "Karma: %s" % KarmaManager.karma
+	karma_target.text = "New Car Karma: %s" % KarmaManager.karma_target

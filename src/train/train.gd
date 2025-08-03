@@ -41,6 +41,8 @@ func _ready() -> void:
 	var event:FmodEvent = FmodServer.create_event_instance("event:/SFX/Ambience/Engine")
 	event.set_2d_attributes(global_transform)
 	event.start()
+	
+	KarmaManager.karma_target_changed.connect(_on_karma_target_changed)
 
 
 func add_train_car() -> void:
@@ -73,3 +75,8 @@ func _on_train_car_entered():
 func _on_train_car_exited():
 	var tween: = get_tree().create_tween()
 	tween.tween_property(fmod_inside_snapshot, "fmod_parameters/inside", 0.0, 0.1)
+
+
+func _on_karma_target_changed(num_upgrades:int) -> void:
+	for i in range(num_upgrades):
+		add_train_car()

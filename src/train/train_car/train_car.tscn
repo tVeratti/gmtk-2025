@@ -21,7 +21,7 @@ polygon = PackedVector2Array(17, 168, 1141, 171, 1136, 180, 25, 178)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43agg"]
 size = Vector2(1049, 100)
 
-[node name="TrainCar" type="Node2D"]
+[node name="TrainCar" type="Node2D" groups=["train_car"]]
 script = ExtResource("1_epm51")
 texture_size = null
 capacity = null

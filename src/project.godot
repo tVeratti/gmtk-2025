@@ -55,6 +55,7 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 [global_group]
 
 seat="position a ghost can be added to train car"
+train_car=""
 
 [input]
 
