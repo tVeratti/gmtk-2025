@@ -13,6 +13,7 @@ var station_label_scene = load("uid://df0ehva33767t")
 @onready var line_2d:Line2D = %Line2D
 
 @onready var info:Label = %Info
+@onready var karma:Label = %Karma
 
 
 func _ready() -> void:
@@ -28,6 +29,8 @@ func _ready() -> void:
 		station_label.progress_ratio = station.track_position
 	
 	train.status_changed.connect(_on_train_status_changed)
+	
+	KarmaManager.karma_gained.connect(_on_karma_changed)
 
 
 func _process(_delta):
@@ -65,3 +68,7 @@ func _to_2d(v:Vector3) -> Vector2:
 
 func _on_train_status_changed(status:String) -> void:
 	info.text = status
+
+
+func _on_karma_changed(_vluae) -> void:
+	karma.text = "Karma: %s" % KarmaManager.karma

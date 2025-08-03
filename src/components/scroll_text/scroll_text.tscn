@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkkhdaokiiobq"]
+
+[ext_resource type="Script" uid="uid://bovx5tdv8qva" path="res://components/scroll_text/scroll_text.gd" id="1_5mmu5"]
+[ext_resource type="Shader" uid="uid://ch7unyxmh1lgg" path="res://assets/shaders/color.gdshader" id="1_v2knl"]
+[ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="2_pvd7l"]
+
+[sub_resource type="Curve2D" id="Curve2D_5mmu5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1, -0.0445664, 22.7526, 0.0445664, -22.7526, 13, -34, 0, 0, 0, 0, -3, -70)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2knl"]
+shader = ExtResource("1_v2knl")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_v2knl"]
+font = ExtResource("2_pvd7l")
+font_size = 56
+outline_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="Animation" id="Animation_5mmu5"]
+resource_name = "show"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 0.533333, 0.99),
+"transitions": PackedFloat32Array(0.233258, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path2D/PathFollow2D/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_half_done"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pvd7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Path2D/PathFollow2D/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2knl"]
+_data = {
+&"RESET": SubResource("Animation_pvd7l"),
+&"show": SubResource("Animation_5mmu5")
+}
+
+[node name="ScrollText" type="Node2D"]
+z_index = 100
+z_as_relative = false
+script = ExtResource("1_5mmu5")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5mmu5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-3, -70)
+progress = 78.7464
+rotates = false
+
+[node name="Label" type="Label" parent="Path2D/PathFollow2D"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_v2knl")
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1e-05, 1e-05)
+text = "+1 Karma"
+label_settings = SubResource("LabelSettings_v2knl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v2knl")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

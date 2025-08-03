@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://qvsvkhevbgy6"]
+[gd_scene load_steps=7 format=3 uid="uid://qvsvkhevbgy6"]
 
 [ext_resource type="Script" uid="uid://cw53mtlcytdfc" path="res://map/hud/hud.gd" id="1_ppxrw"]
 [ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_kkii1"]
 [ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="3_m33vi"]
+[ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="4_m0opj"]
 
 [sub_resource type="Curve2D" id="Curve2D_kkii1"]
 
@@ -51,7 +52,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Transit to Station A"
 label_settings = SubResource("LabelSettings_m0opj")
-horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Layout"]
+[node name="Karma" type="Label" parent="Layout"]
+unique_name_in_owner = true
 layout_mode = 2
+text = "Karma: 0"
+label_settings = ExtResource("4_m0opj")
