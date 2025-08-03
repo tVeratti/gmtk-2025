@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4kimviqnb1al"]
+
+[ext_resource type="Texture2D" uid="uid://c7ptjhywbloan" path="res://train/assets/caboose.png" id="1_1aej1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hwiv"]
+size = Vector2(496, 20)
+
+[node name="Caboose" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1aej1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-309, 196)
+shape = SubResource("RectangleShape2D_7hwiv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-164, -6)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_7hwiv")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwno3upmbut3a"]
+[gd_scene load_steps=13 format=3 uid="uid://cwno3upmbut3a"]
 
 [ext_resource type="Script" uid="uid://2asv3xk8tiua" path="res://train/train.gd" id="1_m5eja"]
 [ext_resource type="Script" uid="uid://bc2tmqnkxb2fr" path="res://train/train_passengers.gd" id="2_jnyq2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bxcg1cl5mwok1" path="res://train/train_state/transit.gd" id="8_h5cmn"]
 [ext_resource type="Script" uid="uid://divlpkhjcrn72" path="res://train/train_state/stop.gd" id="9_cuns8"]
 [ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="10_b4jlk"]
+[ext_resource type="PackedScene" uid="uid://b4kimviqnb1al" path="res://train/caboose.tscn" id="11_h5cmn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_h5cmn"]
 font = ExtResource("10_b4jlk")
@@ -19,6 +20,7 @@ outline_color = Color(0, 0, 0, 0.313726)
 
 [node name="Train" type="Node2D"]
 script = ExtResource("1_m5eja")
+train_car_count = 1
 
 [node name="Passengers" type="Node" parent="."]
 unique_name_in_owner = true
@@ -80,6 +82,11 @@ fmod_parameters/inside/id = 1144336886328575639
 fmod_parameters/inside = 0.0
 fmod_parameters/inside/variant_type = 3
 unique_name_in_owner = true
+
+[node name="Caboose" parent="." instance=ExtResource("11_h5cmn")]
+z_index = 10
+z_as_relative = false
+position = Vector2(1804, 379)
 
 [connection signal="train_car_entered" from="." to="." method="_on_train_car_entered"]
 [connection signal="train_car_exited" from="." to="." method="_on_train_car_exited"]

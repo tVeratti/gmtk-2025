@@ -37,6 +37,10 @@ func _ready() -> void:
 		_add_train_car()
 	
 	train_cars_ready.emit()
+	
+	var event:FmodEvent = FmodServer.create_event_instance("event:/SFX/Ambience/Engine")
+	event.set_2d_attributes(global_transform)
+	event.start()
 
 
 func _add_train_car() -> void:
