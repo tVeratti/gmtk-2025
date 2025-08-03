@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://reaxmh4iatxs"]
+[gd_scene load_steps=4 format=3 uid="uid://reaxmh4iatxs"]
 
+[ext_resource type="Script" uid="uid://c76dttlhjmhuq" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cdh3xivp4ihfw" path="res://map/map.tscn" id="1_ig7tw"]
 [ext_resource type="AudioStream" uid="uid://berio2ylc8p1d" path="res://assets/song1.wav" id="2_0xm2m"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
 
 [node name="Map" parent="." instance=ExtResource("1_ig7tw")]
 

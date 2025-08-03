@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://qvsvkhevbgy6"]
+[gd_scene load_steps=11 format=3 uid="uid://qvsvkhevbgy6"]
 
 [ext_resource type="Script" uid="uid://cw53mtlcytdfc" path="res://map/hud/hud.gd" id="1_ppxrw"]
-[ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_kkii1"]
+[ext_resource type="Texture2D" uid="uid://dul326snewiay" path="res://ghost/assets/stamp.png" id="2_m0opj"]
 [ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="3_m33vi"]
-[ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="4_m0opj"]
 
 [sub_resource type="Curve2D" id="Curve2D_kkii1"]
 
@@ -11,6 +10,41 @@
 font = ExtResource("3_m33vi")
 font_size = 72
 outline_size = 5
+outline_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m33vi"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m33vi"]
+font = ExtResource("3_m33vi")
+font_size = 48
+outline_size = 5
+outline_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r52c5"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0opj"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_r52c5"]
+line_spacing = -24.0
+font = ExtResource("3_m33vi")
+font_size = 32
 outline_color = Color(0, 0, 0, 0.313726)
 
 [node name="Hud" type="MarginContainer"]
@@ -41,11 +75,11 @@ curve = SubResource("Curve2D_kkii1")
 unique_name_in_owner = true
 
 [node name="Train" type="Sprite2D" parent="MiniMap/Path2D/PathFollow2D"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_kkii1")
+texture = ExtResource("2_m0opj")
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = -12
 
 [node name="Info" type="Label" parent="Layout"]
 unique_name_in_owner = true
@@ -53,14 +87,65 @@ layout_mode = 2
 text = "Transit to Station A"
 label_settings = SubResource("LabelSettings_m0opj")
 
+[node name="HSeparator" type="HSeparator" parent="Layout"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 24
+theme_override_styles/separator = SubResource("StyleBoxLine_m33vi")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
 [node name="Karma" type="Label" parent="Layout"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Karma: 0"
-label_settings = ExtResource("4_m0opj")
+text = "Karma: 0 / 120"
+label_settings = SubResource("LabelSettings_m33vi")
 
-[node name="KarmaTarget" type="Label" parent="Layout"]
+[node name="MarginContainer" type="MarginContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 12
+
+[node name="KarmaProgressBar" type="ProgressBar" parent="Layout/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_r52c5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m0opj")
+max_value = 1.0
+value = 0.71
+show_percentage = false
+
+[node name="Tip" type="Label" parent="Layout"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Goal: 20"
-label_settings = ExtResource("4_m0opj")
+text = "Gain a new train car at Station A 
+when you fill up your karma bar."
+label_settings = SubResource("LabelSettings_r52c5")
+
+[node name="Control" type="Control" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="Layout/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+step = 0.01
+value = 0.9
+
+[connection signal="value_changed" from="Layout/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]

@@ -14,7 +14,8 @@ var station_label_scene = load("uid://df0ehva33767t")
 
 @onready var info:Label = %Info
 @onready var karma:Label = %Karma
-@onready var karma_target:Label = %KarmaTarget
+@onready var karma_progress_bar:ProgressBar = %KarmaProgressBar
+@onready var volume_slider:HSlider = %Volume
 
 
 func _ready() -> void:
@@ -34,10 +35,14 @@ func _ready() -> void:
 	_on_karma_changed(0)
 	KarmaManager.karma_gained.connect(_on_karma_changed)
 	KarmaManager.karma_target_changed.connect(_on_karma_changed)
+	
+	_set_volume(0.9)
 
 
 func _process(_delta):
 	path_follow_2d.progress_ratio = MapManager.track_position
+	
+	karma_progress_bar.value = float(KarmaManager.karma) / float(KarmaManager.karma_target)
 
 
 func _get_track_curve() -> Curve2D:
@@ -74,5 +79,15 @@ func _on_train_status_changed(status:String) -> void:
 
 
 func _on_karma_changed(_v) -> void:
-	karma.text = "Karma: %s" % KarmaManager.karma
-	karma_target.text = "New Car Karma: %s" % KarmaManager.karma_target
+	karma.text = "Karma: %s / %s" % [KarmaManager.karma, KarmaManager.karma_target]
+
+
+func _on_volume_value_changed(value):
+	_set_volume(value)
+
+
+func _set_volume(volume:float) -> void:
+	var volume_db:float = lerp(-50.0, 5.0, clamp(volume, 0.0, 1.0))
+	AudioServer.set_bus_mute(0, volume < 0.1)
+	AudioServer.set_bus_volume_db(0, volume_db)
+	volume_slider.release_focus()

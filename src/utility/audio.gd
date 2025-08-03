@@ -29,3 +29,4 @@ static func _tween_eq_bus(value:float) -> void:
 	
 	var lerp_5 = lerp(0.0, -40.0, value)
 	bus_effect.set_band_gain_db(5, lerp_5)
+	printt(lerp_3)

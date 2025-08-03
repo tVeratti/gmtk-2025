@@ -78,16 +78,19 @@ stream = ExtResource("3_mt664")
 volume_db = -80.0
 autoplay = true
 bus = &"Inside"
+playback_type = 1
 
 [node name="TrainStartAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_5fddq")
 bus = &"Inside"
+playback_type = 1
 
 [node name="TrainStopAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_nk7hk")
 bus = &"Inside"
+playback_type = 1
 
 [connection signal="train_car_entered" from="." to="." method="_on_train_car_entered"]
 [connection signal="train_car_exited" from="." to="." method="_on_train_car_exited"]

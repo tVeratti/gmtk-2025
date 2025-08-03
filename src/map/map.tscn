@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdh3xivp4ihfw"]
+[gd_scene load_steps=14 format=3 uid="uid://cdh3xivp4ihfw"]
 
 [ext_resource type="Script" uid="uid://cyqfvhl72mt3g" path="res://map/map.gd" id="1_5jdw0"]
 [ext_resource type="PackedScene" uid="uid://gkp7hgfjxvu0" path="res://map/map_3d/map_3d.tscn" id="1_cn70m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ntcb0ecacf77" path="res://map/assets/IMG_1344.png" id="6_112ik"]
 [ext_resource type="Script" uid="uid://w4p426bbuk2l" path="res://components/main_camera.gd" id="6_xnt8k"]
 [ext_resource type="PackedScene" uid="uid://qvsvkhevbgy6" path="res://map/hud/hud.tscn" id="8_kxmgb"]
+[ext_resource type="AudioStream" uid="uid://ef1fda1mxql0" path="res://sounds/birds1_amb.wav" id="12_lct0g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5oqum"]
 viewport_path = NodePath("SubViewport")
@@ -139,6 +140,10 @@ shadow_item_cull_mask = 3
 color = Color(0.775063, 0.775064, 0.775063, 1)
 
 [node name="BirdsAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_lct0g")
+autoplay = true
+bus = &"Inside"
+playback_type = 1
 
 [node name="WindAudio" type="AudioStreamPlayer" parent="."]
 
