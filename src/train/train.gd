@@ -22,11 +22,13 @@ const TRAIN_SPEED_MAX:float = 0.01
 @onready var train_cars_root:Node2D = %TrainCars
 @onready var passengers:TrainPassengers = %Passengers
 
-@onready var fmod_tracks:FmodEventEmitter2D = %"Fmod-Tracks"
-@onready var fmod_inside_snapshot:FmodEventEmitter2D = %"Fmod-InsideSnapshot"
-
 
 @onready var info:Label = %Info
+
+# Audio Nodes
+@onready var train_audio:AudioStreamPlayer = %TrainAudio
+@onready var train_start_audio:AudioStreamPlayer = %TrainStartAudio
+@onready var train_stop_audio:AudioStreamPlayer = %TrainStopAudio
 
 
 var train_cars:Array = []
@@ -37,10 +39,6 @@ func _ready() -> void:
 		add_train_car()
 	
 	train_cars_ready.emit()
-	
-	var event:FmodEvent = FmodServer.create_event_instance("event:/SFX/Ambience/Engine")
-	event.set_2d_attributes(global_transform)
-	event.start()
 	
 	KarmaManager.karma_target_changed.connect(_on_karma_target_changed)
 
@@ -69,14 +67,15 @@ func _on_passengers_train_passengers_disembarked():
 
 func _on_train_car_entered():
 	var tween: = get_tree().create_tween()
-	tween.tween_property(fmod_inside_snapshot, "fmod_parameters/inside", 1.0, 0.2)
+	AudioUtility.fade_inside(self, true)
 
 
 func _on_train_car_exited():
 	var tween: = get_tree().create_tween()
-	tween.tween_property(fmod_inside_snapshot, "fmod_parameters/inside", 0.0, 0.1)
+	AudioUtility.fade_inside(self, false)
 
 
 func _on_karma_target_changed(num_upgrades:int) -> void:
 	for i in range(num_upgrades):
 		add_train_car()
+	

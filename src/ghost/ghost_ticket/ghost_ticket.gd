@@ -14,6 +14,10 @@ const STAMP_DISTANCE_GREAT:float = 20.0
 const STAMP_DISTANCE_PERFECT:float = 10.0
 
 
+
+@export var stamp_audio_streams:Array[AudioStream] = []
+
+
 var player:Player
 
 var is_stamping:bool = false
@@ -26,11 +30,13 @@ var ticket_tween:Tween
 @onready var ticket_sprite_2d:Sprite2D = %Ticket
 @onready var sprite_material:ShaderMaterial = ticket_sprite_2d.material
 @onready var stamp_sprite_2d:Sprite2D = %Stamp
-@onready var fmod_stamp:FmodEventEmitter2D = %FmodStamp
 @onready var scroll_text_component:ScrollTextComponent = %ScrollTextComponent
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
 @onready var inner:Sprite2D = %Inner
 @onready var station_label:Label = %Station
+
+# Audio Nodes
+@onready var stamp_audio_stream_player:AudioStreamPlayer = %StampAudioStreamPlayer
 
 
 func _ready() -> void:
@@ -81,7 +87,11 @@ func animate_stamp() -> void:
 	# Block other animations/events while stamping
 	is_stamped = true
 	is_stamping = true
-	fmod_stamp.play_one_shot()
+	
+	var stamp_audio:AudioStream = stamp_audio_streams.pick_random()
+	stamp_audio_stream_player.stream = stamp_audio
+	stamp_audio_stream_player.play()
+	
 	animation_player.stop(true)
 	inner.show()
 	

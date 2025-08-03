@@ -158,5 +158,3 @@ position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_jo6ux")
 animation = &"idle"
 autoplay = "walk"
-
-[node name="FmodListener2D" type="FmodListener2D" parent="."]

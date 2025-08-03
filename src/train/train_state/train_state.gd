@@ -31,3 +31,10 @@ func _get_next_index(previous_station_index:int) -> int:
 ## Loop around the 0 index / position to 1.0 to prevent tweens from going backward to 0.0.
 func _get_next_position(station:Station) -> float:
 	return station.track_position if station.index > 0 else 1.0
+
+
+func fade_in_audio(stream:AudioStream) -> void:
+	train.train_state_audio.stop()
+	train.train_state_audio.stream = stream
+	train.train_state_audio.play()
+	#var tween: = AudioUtility.fade_audio(train.train_state_audio, 1.0, 0.3)

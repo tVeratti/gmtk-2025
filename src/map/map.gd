@@ -12,5 +12,4 @@ var loop_progress:float = 0.0
 
 
 func _ready() -> void:
-	await get_tree().create_timer(0.5).timeout
 	player.global_position = train.train_cars[0].global_position + Vector2(300, 300)

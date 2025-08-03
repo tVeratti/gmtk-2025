@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cftgf0k2vg1lw"]
+[gd_scene load_steps=18 format=3 uid="uid://cftgf0k2vg1lw"]
 
 [ext_resource type="Script" uid="uid://ccq17g0e2p25n" path="res://ghost/ghost_ticket/ghost_ticket.gd" id="1_opmfl"]
 [ext_resource type="Shader" uid="uid://fh541b4wyj8i" path="res://map/map_3d/unshaded.gdshader" id="2_0vsax"]
+[ext_resource type="AudioStream" uid="uid://cajxb1qd61e14" path="res://sounds/stamp1.wav" id="2_22pvm"]
+[ext_resource type="AudioStream" uid="uid://cf23a7r7bvjiw" path="res://sounds/stamp2.wav" id="3_ie14p"]
 [ext_resource type="Texture2D" uid="uid://c3y21l7i04tjv" path="res://ghost/assets/ticket.png" id="3_qrp0t"]
 [ext_resource type="Texture2D" uid="uid://c03yavv14derd" path="res://ghost/assets/stamp_outline.png" id="4_0vsax"]
+[ext_resource type="AudioStream" uid="uid://c1n15t8ceypit" path="res://sounds/stamp3.wav" id="4_eijvd"]
 [ext_resource type="FontFile" uid="uid://dk0n5v3auw1kn" path="res://assets/fonts/WinkyRough-VariableFont_wght.ttf" id="4_j5t6i"]
 [ext_resource type="Script" uid="uid://br5k6746jyyb5" path="res://components/scroll_text/scroll_text_component.gd" id="5_0vsax"]
 [ext_resource type="Texture2D" uid="uid://dul326snewiay" path="res://ghost/assets/stamp.png" id="5_awf8o"]
@@ -24,6 +27,21 @@ shader = ExtResource("2_0vsax")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awf8o"]
 shader = ExtResource("2_0vsax")
 
+[sub_resource type="Animation" id="Animation_awf8o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualRoot/Stamp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(55, -28)]
+}
+
 [sub_resource type="Animation" id="Animation_0vsax"]
 resource_name = "stamp_shake"
 loop_mode = 2
@@ -40,21 +58,6 @@ tracks/0/keys = {
 "values": [Vector2(55, -28), Vector2(-7, 45), Vector2(-3, -57), Vector2(48, -5), Vector2(-37, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_awf8o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VisualRoot/Stamp:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(55, -28)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5t6i"]
 _data = {
 &"RESET": SubResource("Animation_awf8o"),
@@ -63,6 +66,7 @@ _data = {
 
 [node name="GhostTicket" type="Node2D"]
 script = ExtResource("1_opmfl")
+stamp_audio_streams = Array[AudioStream]([ExtResource("2_22pvm"), ExtResource("3_ie14p"), ExtResource("4_eijvd")])
 
 [node name="VisualRoot" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
@@ -106,11 +110,6 @@ position = Vector2(0, -61)
 script = ExtResource("5_0vsax")
 metadata/_custom_type_script = "uid://br5k6746jyyb5"
 
-[node name="FmodStamp" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/SFX/Player/Stamp"
-event_guid = "{a0ba4338-0389-4a2c-b3a0-badda58d156e}"
-unique_name_in_owner = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -118,3 +117,6 @@ libraries = {
 }
 autoplay = "stamp_shake"
 speed_scale = 0.4
+
+[node name="StampAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

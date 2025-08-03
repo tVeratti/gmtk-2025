@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwno3upmbut3a"]
+[gd_scene load_steps=16 format=3 uid="uid://cwno3upmbut3a"]
 
 [ext_resource type="Script" uid="uid://2asv3xk8tiua" path="res://train/train.gd" id="1_m5eja"]
+[ext_resource type="AudioStream" uid="uid://bpggx7h1ko3tp" path="res://sounds/train start.wav" id="2_5fddq"]
 [ext_resource type="Script" uid="uid://bc2tmqnkxb2fr" path="res://train/train_passengers.gd" id="2_jnyq2"]
 [ext_resource type="Script" uid="uid://bfd88vxx42apg" path="res://train/bumps.gd" id="2_m5eja"]
+[ext_resource type="AudioStream" uid="uid://bfaen447wo2o5" path="res://sounds/train.wav" id="3_mt664"]
 [ext_resource type="Script" uid="uid://c7o1ov0f1f5wy" path="res://components/state_machine/state_machine.gd" id="4_n21n8"]
+[ext_resource type="AudioStream" uid="uid://bunmvxhm2jkw4" path="res://sounds/train stop.wav" id="4_nk7hk"]
 [ext_resource type="Script" uid="uid://chov6a148vo4t" path="res://train/train_state/idle.gd" id="5_6tk3a"]
 [ext_resource type="Script" uid="uid://che57nvwk3iq1" path="res://train/train_state/board.gd" id="6_46i6o"]
 [ext_resource type="Script" uid="uid://cn5pqs0hvjana" path="res://train/train_state/disembark.gd" id="7_b4jlk"]
@@ -64,29 +67,27 @@ offset_bottom = 89.0
 text = "Transit to Station A"
 label_settings = SubResource("LabelSettings_h5cmn")
 
-[node name="Fmod-Tracks" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/SFX/Ambience/Tracks"
-event_guid = "{50ca7922-3f9d-421e-8b6e-7155d1c9b0ee}"
-autoplay = true
-fmod_parameters/train_motion/id = -8356684585543476017
-fmod_parameters/train_motion = "Idle"
-fmod_parameters/train_motion/labels = PackedStringArray("Idle", "Start", "Stop", "Go")
-fmod_parameters/train_motion/variant_type = 4
-unique_name_in_owner = true
-
-[node name="Fmod-InsideSnapshot" type="FmodEventEmitter2D" parent="."]
-event_name = "snapshot:/InsideSNPSHT"
-event_guid = "{ee9a7f8b-65cd-43b5-ba96-76447b35ce7d}"
-autoplay = true
-fmod_parameters/inside/id = 1144336886328575639
-fmod_parameters/inside = 0.0
-fmod_parameters/inside/variant_type = 3
-unique_name_in_owner = true
-
 [node name="Caboose" parent="." instance=ExtResource("11_h5cmn")]
 z_index = 10
 z_as_relative = false
 position = Vector2(1804, 379)
+
+[node name="TrainAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_mt664")
+volume_db = -80.0
+autoplay = true
+bus = &"Inside"
+
+[node name="TrainStartAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_5fddq")
+bus = &"Inside"
+
+[node name="TrainStopAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_nk7hk")
+bus = &"Inside"
 
 [connection signal="train_car_entered" from="." to="." method="_on_train_car_entered"]
 [connection signal="train_car_exited" from="." to="." method="_on_train_car_exited"]

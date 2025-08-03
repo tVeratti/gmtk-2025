@@ -1,0 +1,17 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://c7nfuyfblhi71"]
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_j3pel"]
+resource_name = "EQ6"
+band_db/1000_hz = -15.0
+band_db/3200_hz = -20.0
+band_db/10000_hz = -40.0
+
+[resource]
+bus/1/name = &"Inside"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ6_j3pel")
+bus/1/effect/0/enabled = true

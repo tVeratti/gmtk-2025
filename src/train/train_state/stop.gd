@@ -10,7 +10,10 @@ var station:Station
 
 func enter(data = {}) -> void:
 	train.status_changed.emit("Approaching Station %s" % data.station_name)
-	train.fmod_tracks["fmod_parameters/train_motion"] = "Stop"
+	#train.fmod_tracks["fmod_parameters/train_motion"] = "Stop"
 	station = MapManager.stations[data.station_index]
+	
+	train.train_stop_audio.play()
+	AudioUtility.fade_audio(train.train_audio, -100, 10.0)
 	
 	MapManager.station_approaching.emit(station)

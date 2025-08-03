@@ -131,7 +131,7 @@ light_energy = 0.5
 unique_name_in_owner = true
 
 [node name="PathFollow3D" parent="Track/Path3D" index="0"]
-transform = Transform3D(-0.0945278, 0.00200908, -0.995429, 8.82521e-05, 0.999955, 0.00200964, 0.995437, 0.000102132, -0.0945272, 16.8844, 1.00356, -127.04)
+transform = Transform3D(-0.0945277, 0.00200908, -0.995429, 8.82519e-05, 0.999955, 0.00200964, 0.995437, 0.000102132, -0.0945271, 16.8844, 1.00356, -127.04)
 progress = 17.6539
 
 [node name="Camera3D" parent="Track/Path3D/PathFollow3D/Sprite3D" index="0"]
@@ -217,7 +217,7 @@ billboard = 2
 texture = ExtResource("11_21w1s")
 
 [node name="Blades" type="Sprite3D" parent="Environment/Windmill"]
-transform = Transform3D(0.183763, 0.507407, -0.118365, 0.519461, -0.188152, -0.000100469, -0.0404021, -0.111256, -0.539657, 0.694723, 0.777678, 0.394024)
+transform = Transform3D(0.183761, 0.507408, -0.118364, 0.519462, -0.18815, -0.000100469, -0.0404014, -0.111256, -0.539657, 0.694723, 0.777678, 0.394024)
 extra_cull_margin = 100.0
 texture = ExtResource("12_gtc71")
 

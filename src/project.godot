@@ -35,7 +35,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FmodManager="*res://addons/fmod/FmodManager.gd"
 MapManager="*res://map/map_manager.gd"
 KarmaManager="*res://player/karma_manager.gd"
 
@@ -49,10 +48,6 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="gmtk-2025"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [global_group]
 

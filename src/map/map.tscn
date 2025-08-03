@@ -127,15 +127,6 @@ position_smoothing_enabled = true
 script = ExtResource("6_xnt8k")
 metadata/_custom_type_script = "uid://w4p426bbuk2l"
 
-[node name="Fmod-Birds" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/SFX/Ambience/Birds"
-event_guid = "{93117f8d-e4d3-49fb-b40d-d70b3289fbab}"
-autoplay = true
-
-[node name="Fmod-Wind" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/SFX/Ambience/Wind"
-event_guid = "{bc46891e-df15-42c5-8a25-58259af6dcd9}"
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 rotation = -0.352556
 color = Color(0.990031, 0.781646, 0.807168, 1)
@@ -146,5 +137,9 @@ shadow_item_cull_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.775063, 0.775064, 0.775063, 1)
+
+[node name="BirdsAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="WindAudio" type="AudioStreamPlayer" parent="."]
 
 [connection signal="train_cars_ready" from="Train" to="." method="_on_train_cars_ready"]
