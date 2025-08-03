@@ -2,6 +2,7 @@ extends Control
 
 
 @export var map_3d:Map3D
+@export var train:Train
 
 
 var station_label_scene = load("uid://df0ehva33767t")
@@ -10,6 +11,8 @@ var station_label_scene = load("uid://df0ehva33767t")
 @onready var path_2d:Path2D = %Path2D
 @onready var path_follow_2d:PathFollow2D = %PathFollow2D
 @onready var line_2d:Line2D = %Line2D
+
+@onready var info:Label = %Info
 
 
 func _ready() -> void:
@@ -22,9 +25,9 @@ func _ready() -> void:
 		label.text = station.station_name
 		path_2d.add_child(station_label)
 		path_2d.move_child(station_label, 0)
-		#label.
 		station_label.progress_ratio = station.track_position
-		
+	
+	train.status_changed.connect(_on_train_status_changed)
 
 
 func _process(_delta):
@@ -58,3 +61,7 @@ func _get_track_curve() -> Curve2D:
 
 func _to_2d(v:Vector3) -> Vector2:
 	return Vector2(v.x, v.z)
+
+
+func _on_train_status_changed(status:String) -> void:
+	info.text = status

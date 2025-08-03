@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://qvsvkhevbgy6"]
+[gd_scene load_steps=5 format=3 uid="uid://qvsvkhevbgy6"]
 
 [ext_resource type="Script" uid="uid://cw53mtlcytdfc" path="res://map/hud/hud.gd" id="1_ppxrw"]
 [ext_resource type="Texture2D" uid="uid://dokxurs0bfet6" path="res://icon.svg" id="2_kkii1"]
+[ext_resource type="LabelSettings" uid="uid://clh2mlvglkjke" path="res://assets/clean_label.tres" id="3_m33vi"]
 
 [sub_resource type="Curve2D" id="Curve2D_kkii1"]
 
@@ -11,6 +12,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_ppxrw")
 
 [node name="MiniMap" type="Node2D" parent="."]
@@ -34,6 +39,13 @@ texture = ExtResource("2_kkii1")
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="Info" type="Label" parent="Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Transit to Station A"
+label_settings = ExtResource("3_m33vi")
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Layout"]
 layout_mode = 2

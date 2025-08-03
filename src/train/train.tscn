@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwno3upmbut3a"]
+[gd_scene load_steps=12 format=3 uid="uid://cwno3upmbut3a"]
 
 [ext_resource type="Script" uid="uid://2asv3xk8tiua" path="res://train/train.gd" id="1_m5eja"]
 [ext_resource type="Script" uid="uid://bc2tmqnkxb2fr" path="res://train/train_passengers.gd" id="2_jnyq2"]
@@ -9,6 +9,13 @@
 [ext_resource type="Script" uid="uid://cn5pqs0hvjana" path="res://train/train_state/disembark.gd" id="7_b4jlk"]
 [ext_resource type="Script" uid="uid://bxcg1cl5mwok1" path="res://train/train_state/transit.gd" id="8_h5cmn"]
 [ext_resource type="Script" uid="uid://divlpkhjcrn72" path="res://train/train_state/stop.gd" id="9_cuns8"]
+[ext_resource type="FontFile" uid="uid://v31g3g8uw7cw" path="res://assets/fonts/Dongle-Regular.ttf" id="10_b4jlk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5cmn"]
+font = ExtResource("10_b4jlk")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 0.313726)
 
 [node name="Train" type="Node2D"]
 script = ExtResource("1_m5eja")
@@ -47,10 +54,23 @@ unique_name_in_owner = true
 
 [node name="Info" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 354.0
 offset_top = 66.0
 offset_right = 394.0
 offset_bottom = 89.0
+text = "Transit to Station A"
+label_settings = SubResource("LabelSettings_h5cmn")
+
+[node name="Fmod-Tracks" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/SFX/Ambience/Tracks"
+event_guid = "{50ca7922-3f9d-421e-8b6e-7155d1c9b0ee}"
+autoplay = true
+fmod_parameters/train_motion/id = -8356684585543476017
+fmod_parameters/train_motion = "Idle"
+fmod_parameters/train_motion/labels = PackedStringArray("Idle", "Start", "Stop", "Go")
+fmod_parameters/train_motion/variant_type = 4
+unique_name_in_owner = true
 
 [connection signal="train_passengers_boarded" from="Passengers" to="." method="_on_passengers_train_passengers_boarded"]
 [connection signal="train_passengers_disembarked" from="Passengers" to="." method="_on_passengers_train_passengers_disembarked"]

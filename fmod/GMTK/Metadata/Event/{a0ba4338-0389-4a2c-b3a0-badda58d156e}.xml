@@ -54,7 +54,7 @@
 			<destination>{ceeed7d1-9b3b-466e-8990-ce6cd713f9e2}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{f5772436-cf8d-492b-9ab6-b308da20e26f}</destination>
+			<destination>{1dd50c48-f97d-4b83-a8c5-33d995508e51}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{e70433a5-d8c0-40df-a9f3-a75d59aa3e2f}" />
@@ -116,7 +116,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{96d580e1-7b74-441e-a782-facb66f03cad}">
 		<property name="volume">
-			<value>-17.5</value>
+			<value>-7</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -133,7 +133,7 @@
 	</object>
 	<object class="MultiSound" id="{0e469d35-1d57-4f0b-a4eb-4d553d3e3102}">
 		<property name="start">
-			<value>0.050000000000000003</value>
+			<value>0.35999999999999999</value>
 		</property>
 		<property name="length">
 			<value>0.20000000000000001</value>
@@ -246,7 +246,7 @@
 	<object class="MixerBusFader" id="{7324ff13-65ce-4366-86a5-a95bd92c1d91}" />
 	<object class="AutomationPoint" id="{9696cc21-705f-46f6-9e66-01ca95b286e6}">
 		<property name="position">
-			<value>0.050000000000000003</value>
+			<value>0.050000000000000037</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -257,7 +257,7 @@
 	</object>
 	<object class="AutomationPoint" id="{c08176b2-b9d5-484f-a158-3ca811307798}">
 		<property name="position">
-			<value>0.40000000000000002</value>
+			<value>0.3999999999999998</value>
 		</property>
 		<property name="value">
 			<value>0</value>

@@ -37,9 +37,13 @@ var sit_texture:Texture
 
 @onready var ticket:GhostTicket = %GhostTicket
 @onready var state_machine:StateMachineComponent = %StateMachine
+@onready var animation_player:AnimationPlayer = %AnimationPlayer
 
 
 func _ready() -> void:
+	# Give slight variation on float bounce
+	animation_player.speed_scale = randf_range(0.8, 1.2)
+	
 	var textures = ghost_sprite_selector.get_random_sprites()
 	sit_texture = textures[0]
 	stand_texture = textures[1]
@@ -47,7 +51,7 @@ func _ready() -> void:
 	destination_label.text = "Destination: %s" % stop_station_index
 
 
-func _process(delta):
+func _process(_delta):
 	state.text = state_machine.state.name
 
 

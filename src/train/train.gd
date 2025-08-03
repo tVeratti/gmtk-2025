@@ -5,6 +5,7 @@ extends Node2D
 signal train_cars_ready
 signal passengers_boarded
 signal passengers_disembarked
+signal status_changed(info:String)
 
 
 const TRAIN_CAR_GAP:float = 30.0
@@ -17,6 +18,8 @@ const TRAIN_SPEED_MAX:float = 0.01
 
 @onready var train_cars_root:Node2D = %TrainCars
 @onready var passengers:TrainPassengers = %Passengers
+
+@onready var fmod_tracks:FmodEventEmitter2D = %"Fmod-Tracks"
 
 @onready var info:Label = %Info
 
@@ -35,7 +38,7 @@ func _add_train_car() -> void:
 	var index = train_cars.size()
 	var train_car:TrainCar = train_car_scene.instantiate()
 	train_cars_root.add_child(train_car)
-	train_car.position.x = -index * (train_car.sprite.texture.get_width() + TRAIN_CAR_GAP)
+	train_car.position.x = -index * (train_car.texture_size + TRAIN_CAR_GAP)
 	train_cars.append(train_car)
 
 

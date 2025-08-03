@@ -21,6 +21,7 @@ var ticket_tween:Tween
 @onready var ticket_sprite_2d:Sprite2D = %Ticket
 @onready var sprite_material:ShaderMaterial = ticket_sprite_2d.material
 @onready var stamp_sprite_2d:Sprite2D = %Stamp
+@onready var fmod_stamp:FmodEventEmitter2D = %FmodStamp
 
 
 func _ready() -> void:
@@ -64,6 +65,7 @@ func animate_out() -> void:
 func animate_stamp() -> void:
 	# Block other animations/events while stamping
 	is_stamping = true
+	fmod_stamp.play_one_shot()
 	
 	#sprite_material.set_shader_parameter("strength", 1.0)
 	
