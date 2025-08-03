@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://b6oyqxxrrpmag" path="res://map/assets/Untitled_Artwork-3.png" id="1_3l0pr"]
 
 [resource]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_3l0pr")
 uv1_scale = Vector3(0.875, 0.875, 0.875)
-uv1_offset = Vector3(-0.93, 0.065, 0.085)
+uv1_offset = Vector3(-0.93, 0.11, 0.085)
 billboard_mode = 2
