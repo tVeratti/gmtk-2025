@@ -16,7 +16,6 @@ func _station_to_dictionary(station:Station) -> Dictionary:
 	return {
 		"station_index": station.index,
 		"station_name": station.station_name,
-		"num_boarders": station.num_boarders,
 		"track_position": station.track_position
 	}
 

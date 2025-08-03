@@ -77,8 +77,7 @@ func set_sitting() -> void:
 
 
 func _on_interact_area_body_entered(body):
-	if not ticket_stamped:
-		ticket.animate_in(body)
+	ticket.animate_in(body)
 
 
 func _on_interact_area_body_exited(_body):

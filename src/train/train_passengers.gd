@@ -13,7 +13,7 @@ signal train_passengers_disembarked
 
 
 ## Try boarding a number of new passengers checking all train cars for capacity.
-func try_board_passengers(amount:int, station_index:int) -> void:
+func try_board_passengers(station_index:int) -> void:
 	var cars_with_capacity:Array = train.train_cars.filter(
 		func(car:TrainCar):
 			return car.passengers.has_capacity())
@@ -23,7 +23,7 @@ func try_board_passengers(amount:int, station_index:int) -> void:
 		return
 	
 	var new_ghosts: = Array()
-	for i in range(amount):
+	for i in range(cars_with_capacity.size() * 4):
 		var ghost: = _create_ghost_passenger(station_index)
 		new_ghosts.append(ghost)
 	

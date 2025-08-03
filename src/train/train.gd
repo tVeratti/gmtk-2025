@@ -34,7 +34,7 @@ var train_cars:Array = []
 
 func _ready() -> void:
 	for i in range(train_car_count):
-		_add_train_car()
+		add_train_car()
 	
 	train_cars_ready.emit()
 	
@@ -43,7 +43,7 @@ func _ready() -> void:
 	event.start()
 
 
-func _add_train_car() -> void:
+func add_train_car() -> void:
 	if train_cars_root.get_child_count() > 0:
 		train_cars_root.get_child(-1).set_is_last(false)
 	

@@ -17,6 +17,7 @@ const STAMP_DISTANCE_PERFECT:float = 10.0
 var player:Player
 
 var is_stamping:bool = false
+var is_stamped:bool = false
 
 var ticket_tween:Tween
 
@@ -29,10 +30,12 @@ var ticket_tween:Tween
 @onready var scroll_text_component:ScrollTextComponent = %ScrollTextComponent
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
 @onready var inner:Sprite2D = %Inner
+@onready var station_label:Label = %Station
 
 
 func _ready() -> void:
 	ticket_sprite_2d.scale = Vector2.ZERO
+	station_label.text = str(MapManager.stations[owner.stop_station_index].station_name)
 
 
 func animate_in(interacting_player:Player) -> void:
@@ -52,7 +55,8 @@ func animate_in(interacting_player:Player) -> void:
 	ticket_tween.parallel().tween_property(visual_root, "position:x", direction.x * POSITION_OFFSET, SHOW_ANIMATION_DURATION)
 	ticket_tween.parallel().tween_property(visual_root, "position:y", -100.0, SHOW_ANIMATION_DURATION)
 	
-	player.player_input.interact.connect(_on_player_interact)
+	if not is_stamped:
+		player.player_input.interact.connect(_on_player_interact)
 
 
 func animate_out() -> void:
@@ -69,11 +73,13 @@ func animate_out() -> void:
 	ticket_tween.tween_property(ticket_sprite_2d, "scale", Vector2.ZERO, SHOW_ANIMATION_DURATION)
 	ticket_tween.parallel().tween_property(visual_root, "position", Vector2.ZERO, SHOW_ANIMATION_DURATION)
 	
-	player.player_input.interact.disconnect(_on_player_interact)
+	if not is_stamped:
+		player.player_input.interact.disconnect(_on_player_interact)
 
 
 func animate_stamp() -> void:
 	# Block other animations/events while stamping
+	is_stamped = true
 	is_stamping = true
 	fmod_stamp.play_one_shot()
 	animation_player.stop(true)
@@ -93,6 +99,13 @@ func animate_stamp() -> void:
 	#tween.parallel().tween_method(_tween_shader, 1.0, 0.0, 0.5)
 	ticket_tween.parallel().tween_property(visual_root, "position:y", -150.0, STAMP_ANIMATION_DURATION)
 	ticket_tween.tween_property(visual_root, "self_modulate:a", 0.0, STAMP_ANIMATION_DURATION)
+	ticket_tween.tween_callback(func():
+		ticket_sprite_2d.scale = Vector2.ZERO
+		stamp_sprite_2d.hide()
+		stamp_sprite_2d.self_modulate.a = 0.0
+		visual_root.self_modulate.a = 1.0
+		is_stamping = false
+		animate_out())
 	
 	# Animate the stamp sprite
 	var stamp_distance = stamp_sprite_2d.position.length()
