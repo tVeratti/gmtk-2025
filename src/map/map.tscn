@@ -19,7 +19,7 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_5jdw0")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(1920, 1080)
+size = Vector2i(960, 540)
 
 [node name="Map3D" parent="SubViewport" instance=ExtResource("1_cn70m")]
 unique_name_in_owner = true
